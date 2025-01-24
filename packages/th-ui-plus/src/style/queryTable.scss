@@ -1,0 +1,34 @@
+@use 'common/var' as *;
+@use 'mixins/mixins' as *;
+@use 'sass:map';
+@use 'mixins/config' as *;
+
+ @include base(query-table) {
+  display: flex;
+  flex-direction: column;
+  @include m(pagination){
+    margin: 10px 0 0 auto;
+  }
+  @include m(header){
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 8px;
+    @include child-level(icon){
+      margin-left: 4px;
+    }
+  }
+  @include child-level(table){
+    height: 100%;
+    .#{$orgnamespace}-scrollbar__wrap{
+      text-align: justify;
+    }
+  }
+  @include m(number-column){
+    font-weight: bold;
+  }
+  @include m(thousands-column){
+    font-weight: bold;
+  }
+}

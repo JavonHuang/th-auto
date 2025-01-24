@@ -1,0 +1,13 @@
+{
+  "name": "th-auto",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev":"pnpm run -C packages/auto-ui dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
