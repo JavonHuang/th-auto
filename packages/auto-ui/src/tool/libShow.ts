@@ -31,7 +31,6 @@ export const libShow:Array<IlibSHow>=  [
       {
         name: "按钮",
         code: "ThButton",
-        text: "Default",
         dragalble: false,
         isInit:false,
         props: {
@@ -47,7 +46,6 @@ export const libShow:Array<IlibSHow>=  [
       {
         name: "表单",
         code: "ThForm",
-        text: "",
         dragalble: true,
         isInit:false,
         props: {
@@ -56,7 +54,6 @@ export const libShow:Array<IlibSHow>=  [
       {
         name: "表单项",
         code: "ThFormItem",
-        text: "",
         dragalble: true,
         isInit:false,
         props: {
@@ -65,7 +62,6 @@ export const libShow:Array<IlibSHow>=  [
       {
         name: "输入框",
         code: "ThInput",
-        text: "",
         dragalble: false,
         isInit:false,
         props: {

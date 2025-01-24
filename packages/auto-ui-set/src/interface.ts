@@ -42,7 +42,7 @@ export type{
 }
 
 type componentType='Input'|'InputNumber';
-export  interface ComponentSetProps{
+export  interface SetProps{
   //输入类型
   componentType:componentType,
   //对应组件的属性描述
@@ -51,4 +51,10 @@ export  interface ComponentSetProps{
   props:string,
   //对应组件的属性的值
   value:any
+}
+
+export interface ComponentSetProps{
+  style:Array<SetProps>,
+  props:Array<SetProps>,
+  extra:Array<SetProps>
 }

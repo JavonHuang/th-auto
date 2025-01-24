@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { reactive, ref } from "vue";
+import { ref } from "vue";
 import { Direction, ILibTreeNode } from "@/tool/interface";
 
 export const useDesignStore = defineStore('libStore', () => {

@@ -3,6 +3,7 @@ import { useDesignStore } from "@/store/useDesignStore"
 import { storeToRefs } from "pinia"
 import { Direction } from "@/tool/interface"
 import { findLib } from './libShow'
+import AutoUISet, { getProps } from 'auto-ui-set'
 
 export const generateID = ():string => { 
   let timestamp = new Date().getTime();
@@ -74,10 +75,18 @@ const drag: Directive = {
         } else if (y >dom.clientHeight / 2) {
           dropDirection = 'down';
         }
+        let component=findLib(dragNodeCode.value!)
+        const fn=AutoUISet[component?.code.replace('-','')+'Set']
+        if(fn){
+          const config=fn()
+          component!.props=getProps(config.props)
+          component!.style=getProps(config.style)
+          component!.extra=getProps(config.extra)
+        }
 
         insertChildNode(el.getAttribute('id')!, {
           id: generateID(),
-          component: findLib(dragNodeCode.value!),
+          component: component,
           children: [],
         },dropDirection)
         // dom.style.borderColor = "#CDD0D6"

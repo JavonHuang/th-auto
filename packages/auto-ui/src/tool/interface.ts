@@ -13,21 +13,23 @@ interface ILibTreeNode {
 /**
  * code 组件编码
  * name 组件名
- * text 默认子节点
  * dragalble 允许拖如入子节点
- * isInit 允许拖如入子节点
+ * isInit 是否已经初始化
+ * text
  * props 组件属性
  */
 interface componentProps { 
   code: string
   name: string
-  text?: string
   dragalble?:boolean
   isInit:boolean
   props: {
     [key:string]:any
   },
   style?: {
+    [key:string]:any
+  },
+  extra?: {
     [key:string]:any
   }
 }

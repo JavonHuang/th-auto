@@ -10,7 +10,7 @@
     :style="item.component?.style"
     :class="colKls(item)"
     >
-    {{item.component?.text}}
+    {{renderText(item)}}
     <DesignTree :node-list="item.children"></DesignTree>
   </component>
 </template>
@@ -34,6 +34,13 @@ const colKls = (e:ILibTreeNode) => {
     classes.push('is-select')
   }
   return classes
+}
+
+const renderText=(e:ILibTreeNode)=>{
+  if(e.component && e.component.extra && e.component.extra.text){
+    return e.component.extra.text
+  }
+  return 
 }
 
 </script>
