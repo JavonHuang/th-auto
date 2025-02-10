@@ -41,7 +41,7 @@ export type{
   columnType
 }
 
-type componentType='Input'|'InputNumber';
+type componentType='Input'|'InputNumber'|'Select'|'Checkbox';
 export  interface SetProps{
   //输入类型
   componentType:componentType,
@@ -50,7 +50,11 @@ export  interface SetProps{
   //对应组件的属性key
   props:string,
   //对应组件的属性的值
-  value:any
+  value:any,
+  //控制器本身属性设置
+  controlProps?:{
+    [key: string]: any;
+  }
 }
 
 export interface ComponentSetProps{

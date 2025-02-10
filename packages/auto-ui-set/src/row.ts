@@ -2,14 +2,15 @@ import { ComponentSetProps } from "./interface"
 
 const ThRowSet=():ComponentSetProps=>{
   return {
-    style:[],
-    props:[
+    style:[
       {
-        componentType:'InputNumber',
-        propsName:'列宽',
-        props:'span',
-        value:12
+        componentType:'Input',
+        propsName:'背景色',
+        props:'backgroundColor',
+        value:'#fff'
       }
+    ],
+    props:[
     ],
     extra:[]
   }

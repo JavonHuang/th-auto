@@ -13,6 +13,7 @@ import ThCalendar from './src/calendar/calendar.ts'
 import ThCard from './src/card/card.ts'
 import ThCarousel from './src/carousel/carousel.ts'
 import ThCheckbox from './src/checkbox/checkbox.ts'
+import ThCheckboxGroup from './src/checkbox/checkboxGroup.ts'
 import ThCol from './src/col/col.ts'
 import ThCollapse from './src/collapse/collapse.ts'
 import ThColorPicker from './src/colorPicker/colorPicker.ts'
@@ -88,6 +89,7 @@ const components: {
   ThCard,
   ThCarousel,
   ThCheckbox,
+  ThCheckboxGroup,
   ThCol,
   ThCollapse,
   ThColorPicker,

@@ -15,15 +15,9 @@ const { libList } = storeToRefs(store)
 </script>
 <style lang="scss" scoped>
 .design{
+  border: 1px solid #DCDFE6;
   flex: 1;
-  margin: 4px 8px;
-  :deep(.el-row.drag-tool){
-    min-height:32px;
-    // width: 100%;
-    padding: 4px;
-  }
-  :deep(.el-col.drag-tool){
-    padding: 4px;
-  }
+  background: #fff;
+  padding: 10px;
 }
 </style>

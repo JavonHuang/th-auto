@@ -11,6 +11,7 @@ import {ThCalendarProps} from './src/calendar/calendar'
 import {ThCardProps} from './src/card/card'
 import {ThCarouselProps} from './src/carousel/carousel'
 import {ThCheckboxProps} from './src/checkbox/checkbox'
+import {ThCheckboxGroupProps} from './src/checkbox/checkboxGroup'
 import {ThColProps} from './src/col/col'
 import {ThCollapseProps} from './src/collapse/collapse'
 import {ThColorPickerProps} from './src/colorPicker/colorPicker'
@@ -82,6 +83,7 @@ declare module 'vue' {
     ThCard:ThCardProps,
     ThCarousel:ThCarouselProps,
     ThCheckbox:ThCheckboxProps,
+    ThCheckboxGroup:ThCheckboxGroupProps,
     ThCol:ThColProps,
     ThCollapse:ThCollapseProps,
     ThColorPicker:ThColorPickerProps,

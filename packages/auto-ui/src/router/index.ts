@@ -25,6 +25,16 @@ const routes: Array<RouteRecordRaw> = [
     ]
   },
   {
+    path:"/preview",
+    name: "preview",
+    component:()=>import('@/pages/preview/index.vue')
+  },
+  {
+    path:"/mobile",
+    name: "mobile",
+    component:()=>import('@/pages/mobile/index.vue')
+  },
+  {
     path:"/",
     name: "portal",
     component:()=>import('@/portal.vue'),

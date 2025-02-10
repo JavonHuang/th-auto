@@ -6,7 +6,7 @@ export const useDesignStore = defineStore('libStore', () => {
   const dragNodeCode=ref<string|null>(null)
   const libList = ref<ILibTreeNode>({
     id: 'root',
-    component: { dragalble: true,isInit:true, code: 'div', name: "根节点", props: {}, style: {width:'100%',height:'100%'} },
+    component: { targetDragalble: true,isInit:true, code: 'div', name: "根节点", props: {}, style: {width:'100%',height:'100%'} },
     children: [],
   })
   const selectNode=ref<ILibTreeNode|null>()
@@ -28,11 +28,12 @@ export const useDesignStore = defineStore('libStore', () => {
   function insertChildNode(nodeId: string, childrenNode: ILibTreeNode,d:Direction) {
     let node:ILibTreeNode=findNode(libList.value,nodeId,()=>{})!
     if (node.children) {
-      if (d == 'right' || d == 'down') {
-        node.children.push(childrenNode);
-      } else { 
-        node.children.unshift(childrenNode);
-      }
+      // if (d == 'right' || d == 'down') {
+      //   node.children.push(childrenNode);
+      // } else { 
+      //   node.children.unshift(childrenNode);
+      // }
+      node.children.push(childrenNode);
     } else {
         node.children = [childrenNode];
     }
@@ -102,4 +103,10 @@ export const useDesignStore = defineStore('libStore', () => {
     
   
   return { dragNodeCode,libList,selectNode,insertChildNode,findNode,setDragNode,setSelectNode,updateNode,removeNode } 
-})
+}, 
+// {
+//   persist: {
+//     pick: ['libList']
+//   }
+// }
+)

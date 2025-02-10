@@ -24,7 +24,7 @@
         :indent="8"
         :props='treeprops'>
         <template #default="{ node, data }">
-          <span class="custom-tree-node" v-drag:target="data.component.dragalble??false" :id="data.id" >
+          <span class="custom-tree-node" v-drag:target="data.component.targetDragalble??false" :id="data.id" >
             <span v-on:click="selectNode(data)">{{data.component?data.component.name:''}}</span>
             <th-icon v-on:click="remove(data)">
               <DeleteFilled/>

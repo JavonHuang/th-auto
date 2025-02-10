@@ -21,7 +21,7 @@ interface ILibTreeNode {
 interface componentProps { 
   code: string
   name: string
-  dragalble?:boolean
+  targetDragalble?:boolean
   isInit:boolean
   props: {
     [key:string]:any

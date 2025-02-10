@@ -4,6 +4,7 @@ import drag from "@/tool/drag.ts"
 import './style.css'
 // import ThUI from 'th-ui-plus'
 import ThUI from 'th-ui-plus'
+import ThUIMobile from 'th-ui-mobile'
 
 // import 'th-ui-plus/lib/src/index.css'
 
@@ -22,4 +23,5 @@ app.directive('drag', drag)
 // app.use(ElementPlus)
 // app.use(DBelement)
 app.use(ThUI)
+app.use(ThUIMobile)
 app.use(pinia).use(router).mount('#app')

@@ -10,7 +10,6 @@
     flex-wrap: wrap;
     justify-content: space-between;
     overflow: hidden;
-    height: 50px;
     transition: height 0.5s ease-in-out; /* 0.5秒过渡时间，缓动效果 */
   }
 }
@@ -19,6 +18,7 @@
   @include m(inline) {
     padding-right: 12px!important;
     margin-right: 0!important;
+    width: 100%!important;
     .#{$orgnamespace}-form-item__content{
       min-width: 0;
       width: 100%!important;

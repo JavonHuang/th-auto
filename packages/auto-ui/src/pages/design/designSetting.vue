@@ -1,8 +1,14 @@
 <template>
   <div class="design-setting">
     <th-form :model="propsModel">
-      <th-form-item v-for="item in componentConfigList" :key="item.props" :label="item.propsName">
-        <component :is="'Th'+item.componentType" v-model="propsModel[item.props]"></component>
+      <th-form-item v-for="item in propsList" :key="item.props" :label="item.propsName">
+        <component :is="'Th'+item.componentType" v-bind="item.controlProps" v-model="propsModel[item.props]"></component>
+      </th-form-item>
+      <th-form-item v-for="item in extraList" :key="item.props" :label="item.propsName">
+        <component :is="'Th'+item.componentType" v-bind="item.controlProps" v-model="extraModel[item.props]"></component>
+      </th-form-item>
+      <th-form-item v-for="item in styleList" :key="item.props" :label="item.propsName">
+        <component :is="'Th'+item.componentType" v-bind="item.controlProps" v-model="styleModel[item.props]"></component>
       </th-form-item>
     </th-form>
   </div>
@@ -15,10 +21,18 @@ import { storeToRefs } from 'pinia'
 import { watch,ref } from 'vue';
 import { ILibTreeNode } from '@/tool/interface';
 import _ from 'lodash'
+import { SetProps } from 'auto-ui-set/src/interface';
 const store = useDesignStore()
 const { selectNode } = storeToRefs(store)
-let componentConfigList=ref<Array<ComponentSetProps>>([])
+const componentConfigList=ref<ComponentSetProps|null>()
+const propsList=ref<Array<SetProps>|null>()
+const extraList=ref<Array<SetProps>|null>()
+const styleList=ref<Array<SetProps>|null>()
+
 const propsModel:any=ref({})
+const extraModel:any=ref({})
+const styleModel:any=ref({})
+
 const lastId=ref('')
 
 watch(selectNode,()=>{
@@ -28,36 +42,68 @@ watch(selectNode,()=>{
   if(selectNode.value){
     const fn=AutoUISet[selectNode?.value?.component?.code.replace('-','')+'Set']
     if(fn){
-      componentConfigList.value= fn() as Array<ComponentSetProps>
+      componentConfigList.value= fn() as ComponentSetProps
     }else{
-      componentConfigList.value = []
+      componentConfigList.value = null
     }
   }else{
-    componentConfigList.value = []
+    componentConfigList.value = null
   }
+  propsList.value=componentConfigList.value?.props
+  extraList.value=componentConfigList.value?.extra
+  styleList.value=componentConfigList.value?.style
+
+
   if(selectNode.value?.component!.isInit){
     propsModel.value = selectNode.value?.component?.props
+    extraModel.value = selectNode.value?.component?.extra
+    styleModel.value = selectNode.value?.component?.style
   }else{
     let props:any={}
-    componentConfigList.value.forEach((e)=>{
+    let props1:any={}
+    let props2:any={}
+    componentConfigList.value?.props.forEach((e)=>{
       props[e.props]=e.value
     })
+    componentConfigList.value?.extra.forEach((e)=>{
+      props1[e.props]=e.value
+    })
+    componentConfigList.value?.style.forEach((e)=>{
+      props2[e.props]=e.value
+    })
     propsModel.value= props
+    extraModel.value= props1
+    styleModel.value= props2
   }
   lastId.value=selectNode.value?.id!
 })
 
 watch(propsModel,()=>{
   let node:ILibTreeNode={...selectNode.value!}
-  // if(!_.isEqual( node.component!.props,propsModel.value)){
-    node.component!.props=propsModel.value
-    node.component!.isInit=true
-    store.updateNode(node.id,node)
-  // }
+  node.component!.props=propsModel.value
+  node.component!.isInit=true
+  store.updateNode(node.id,node)
 },{
   deep:true
 })
 
+watch(extraModel,()=>{
+  let node:ILibTreeNode={...selectNode.value!}
+  node.component!.extra=extraModel.value
+  node.component!.isInit=true
+  store.updateNode(node.id,node)
+},{
+  deep:true
+})
+
+watch(styleModel,()=>{
+  let node:ILibTreeNode={...selectNode.value!}
+  node.component!.style=styleModel.value
+  node.component!.isInit=true
+  store.updateNode(node.id,node)
+},{
+  deep:true
+})
 
 </script>
 

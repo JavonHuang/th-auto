@@ -4,7 +4,7 @@
     :key="item.id" 
     :id="item.id" 
     :is="item.component?.code" 
-    v-drag:target="item.component?.dragalble" 
+    v-drag:target="item.component?.targetDragalble" 
     v-on:click.stop="click(item)"
     v-bind="item.component?.props"
     :style="item.component?.style"
@@ -46,13 +46,13 @@ const renderText=(e:ILibTreeNode)=>{
 </script>
 <style lang="scss" scoped>
 .is-select{
-  border-color: #f89898!important;
+  border:1px dashed #f89898!important;
 }
 .is-trage{
   border-color: #409EFF!important;
   background: #d5eaff;
 }
-.drag-tool{
-  border: 1px dashed #DCDFE6;
-}
+// .drag-tool{
+//   border: 1px dashed #DCDFE6;
+// }
 </style>

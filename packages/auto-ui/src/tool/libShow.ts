@@ -8,7 +8,7 @@ export const libShow:Array<IlibSHow>=  [
       {
         name: "行",
         code: "ThRow",
-        dragalble: true,
+        targetDragalble: true,
         isInit:false,
         props: {
         }
@@ -16,7 +16,7 @@ export const libShow:Array<IlibSHow>=  [
       {
         name: "列",
         code: "ThCol",
-        dragalble: true,
+        targetDragalble: true,
         isInit:false,
         props: {
           span:24
@@ -31,7 +31,7 @@ export const libShow:Array<IlibSHow>=  [
       {
         name: "按钮",
         code: "ThButton",
-        dragalble: false,
+        targetDragalble: false,
         isInit:false,
         props: {
           type:'primary'
@@ -46,7 +46,7 @@ export const libShow:Array<IlibSHow>=  [
       {
         name: "表单",
         code: "ThForm",
-        dragalble: true,
+        targetDragalble: true,
         isInit:false,
         props: {
         }
@@ -54,7 +54,7 @@ export const libShow:Array<IlibSHow>=  [
       {
         name: "表单项",
         code: "ThFormItem",
-        dragalble: true,
+        targetDragalble: true,
         isInit:false,
         props: {
         }
@@ -62,10 +62,19 @@ export const libShow:Array<IlibSHow>=  [
       {
         name: "输入框",
         code: "ThInput",
-        dragalble: false,
+        targetDragalble: false,
         isInit:false,
         props: {
           value:'输入框'
+        }
+      },
+      {
+        name: "勾选框",
+        code: "ThCheckbox",
+        targetDragalble: false,
+        isInit:false,
+        props: {
+          value:false
         }
       },
     ]
