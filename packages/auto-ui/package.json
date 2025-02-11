@@ -11,7 +11,6 @@
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.3.1",
-    "auto-ui-set": "file:../auto-ui-set",
     "axios": "^1.7.7",
     "lodash": "^4.17.21",
     "mockjs": "^1.1.0",
@@ -22,6 +21,7 @@
     "terser": "^5.36.0",
     "th-ui-mobile": "file:../th-ui-mobile",
     "th-ui-plus": "file:../th-ui-plus",
+    "th-ui-set": "file:../th-ui-set",
     "vue": "^3.5.12",
     "vue-router": "^4.4.5"
   },

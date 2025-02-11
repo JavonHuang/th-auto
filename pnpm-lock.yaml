@@ -13,9 +13,6 @@ importers:
       '@element-plus/icons-vue':
         specifier: ^2.3.1
         version: 2.3.1(vue@3.5.13(typescript@5.6.3))
-      auto-ui-set:
-        specifier: file:../auto-ui-set
-        version: link:../auto-ui-set
       axios:
         specifier: ^1.7.7
         version: 1.7.9
@@ -46,6 +43,9 @@ importers:
       th-ui-plus:
         specifier: file:../th-ui-plus
         version: link:../th-ui-plus
+      th-ui-set:
+        specifier: file:../th-ui-set
+        version: link:../th-ui-set
       vue:
         specifier: ^3.5.12
         version: 3.5.13(typescript@5.6.3)
@@ -85,37 +85,6 @@ importers:
         version: 4.5.0(@types/node@22.10.9)(rollup@4.31.0)(typescript@5.6.3)(vite@5.4.14(@types/node@22.10.9)(sass-embedded@1.83.4)(sass@1.83.4)(terser@5.37.0))
       vue-tsc:
         specifier: ^2.1.8
-        version: 2.2.0(typescript@5.6.3)
-
-  packages/auto-ui-set:
-    dependencies:
-      element-plus:
-        specifier: ^2.9.0
-        version: 2.9.3(vue@3.5.13(typescript@5.6.3))
-      lodash:
-        specifier: ^4.17.21
-        version: 4.17.21
-      moment:
-        specifier: ^2.30.1
-        version: 2.30.1
-    devDependencies:
-      '@vitejs/plugin-vue':
-        specifier: ^5.2.1
-        version: 5.2.1(vite@6.0.11(@types/node@22.10.9)(jiti@2.4.2)(sass-embedded@1.83.4)(sass@1.83.4)(terser@5.37.0))(vue@3.5.13(typescript@5.6.3))
-      sass-embedded:
-        specifier: ^1.82.0
-        version: 1.83.4
-      typescript:
-        specifier: ~5.6.2
-        version: 5.6.3
-      vite:
-        specifier: ^6.0.1
-        version: 6.0.11(@types/node@22.10.9)(jiti@2.4.2)(sass-embedded@1.83.4)(sass@1.83.4)(terser@5.37.0)
-      vite-plugin-dts:
-        specifier: ^4.3.0
-        version: 4.5.0(@types/node@22.10.9)(rollup@4.31.0)(typescript@5.6.3)(vite@6.0.11(@types/node@22.10.9)(jiti@2.4.2)(sass-embedded@1.83.4)(sass@1.83.4)(terser@5.37.0))
-      vue-tsc:
-        specifier: ^2.1.10
         version: 2.2.0(typescript@5.6.3)
 
   packages/th-ui-mobile:
@@ -159,6 +128,37 @@ importers:
         version: 2.2.0(typescript@5.6.3)
 
   packages/th-ui-plus:
+    dependencies:
+      element-plus:
+        specifier: ^2.9.0
+        version: 2.9.3(vue@3.5.13(typescript@5.6.3))
+      lodash:
+        specifier: ^4.17.21
+        version: 4.17.21
+      moment:
+        specifier: ^2.30.1
+        version: 2.30.1
+    devDependencies:
+      '@vitejs/plugin-vue':
+        specifier: ^5.2.1
+        version: 5.2.1(vite@6.0.11(@types/node@22.10.9)(jiti@2.4.2)(sass-embedded@1.83.4)(sass@1.83.4)(terser@5.37.0))(vue@3.5.13(typescript@5.6.3))
+      sass-embedded:
+        specifier: ^1.82.0
+        version: 1.83.4
+      typescript:
+        specifier: ~5.6.2
+        version: 5.6.3
+      vite:
+        specifier: ^6.0.1
+        version: 6.0.11(@types/node@22.10.9)(jiti@2.4.2)(sass-embedded@1.83.4)(sass@1.83.4)(terser@5.37.0)
+      vite-plugin-dts:
+        specifier: ^4.3.0
+        version: 4.5.0(@types/node@22.10.9)(rollup@4.31.0)(typescript@5.6.3)(vite@6.0.11(@types/node@22.10.9)(jiti@2.4.2)(sass-embedded@1.83.4)(sass@1.83.4)(terser@5.37.0))
+      vue-tsc:
+        specifier: ^2.1.10
+        version: 2.2.0(typescript@5.6.3)
+
+  packages/th-ui-set:
     dependencies:
       element-plus:
         specifier: ^2.9.0

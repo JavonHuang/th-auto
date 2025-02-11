@@ -5,12 +5,6 @@ const ThRowSet=():ComponentSetProps=>{
   return {
     style:[
       ...commonStyle,
-      {
-        componentType:'Input',
-        propsName:'背景色',
-        props:'backgroundColor',
-        value:'#fff'
-      }
     ],
     props:[
     ],

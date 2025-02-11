@@ -11,52 +11,52 @@ export const commonProps = [
 
 export const commonStyle = [
   {
-    componentType:'Input',
+    componentType:'AutoNumber',
     propsName:'宽',
     props:'width',
     value:''
   },
   {
-    componentType:'Input',
+    componentType:'AutoNumber',
     propsName:'高',
     props:'height',
     value:''
   },
   {
-    componentType:'Input',
+    componentType:'AutoBoxSize',
     propsName:'内边距',
     props:'padding',
-    value:''
+    value:null
   },
   {
-    componentType:'Input',
+    componentType:'AutoBoxSize',
     propsName:'外边距',
     props:'margin',
-    value:''
+    value:null
   },
   {
-    componentType:'Input',
-    propsName:'外边距',
-    props:'margin',
-    value:''
-  },
-  {
-    componentType:'Input',
+    componentType:'AutoBorder',
     propsName:'边框',
     props:'border',
     value:''
   },
   {
-    componentType:'Input',
+    componentType:'AutoBoxSize',
     propsName:'圆角',
     props:'borderRadius',
-    value:''
+    value:null
   },
   {
-    componentType:'Input',
+    componentType:'AutoColorPicker',
+    propsName:'底色',
+    props:'backgroundColor',
+    value:null
+  },
+  {
+    componentType:'AutoTextAlign',
     propsName:'文字对齐',
     props:'textAlign',
-    value:''
+    value:null
   },
 ] as Array<SetProps>
 

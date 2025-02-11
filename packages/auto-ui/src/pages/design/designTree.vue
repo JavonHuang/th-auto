@@ -46,10 +46,10 @@ const renderText=(e:ILibTreeNode)=>{
 </script>
 <style lang="scss" scoped>
 .is-select{
-  border:1px dashed #f89898!important;
+  border:1px dashed #f89898;
 }
 .is-trage{
-  border-color: #409EFF!important;
+  border-color: #409EFF;
   background: #d5eaff;
 }
 // .drag-tool{

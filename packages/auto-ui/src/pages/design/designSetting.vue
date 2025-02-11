@@ -8,20 +8,20 @@
         <component :is="'Th'+item.componentType" v-bind="item.controlProps" v-model="extraModel[item.props]"></component>
       </th-form-item>
       <th-form-item v-for="item in styleList" :key="item.props" :label="item.propsName">
-        <component :is="'Th'+item.componentType" v-bind="item.controlProps" v-model="styleModel[item.props]"></component>
+        <component :is="item.componentType" v-bind="item.controlProps" v-model="styleModel[item.props]"></component>
       </th-form-item>
     </th-form>
   </div>
 </template>
 
 <script setup lang="ts">
-import AutoUISet, { ComponentSetProps } from 'auto-ui-set'
+import AutoUISet, { ComponentSetProps } from 'th-ui-set'
 import { useDesignStore } from "@/store/useDesignStore";
 import { storeToRefs } from 'pinia'
 import { watch,ref } from 'vue';
 import { ILibTreeNode } from '@/tool/interface';
 import _ from 'lodash'
-import { SetProps } from 'auto-ui-set/src/interface';
+import { SetProps } from 'th-ui-set/src/interface';
 const store = useDesignStore()
 const { selectNode } = storeToRefs(store)
 const componentConfigList=ref<ComponentSetProps|null>()

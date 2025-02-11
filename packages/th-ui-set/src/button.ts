@@ -4,7 +4,7 @@ import {commonStyle} from "./commonSet"
 const ThButtonSet=():ComponentSetProps=>{
   return {
     style:[
-      ...commonStyle
+      ...commonStyle,
     ],
     props:[
       {
@@ -21,7 +21,7 @@ const ThButtonSet=():ComponentSetProps=>{
             {label:'Danger',value:'danger'},
           ]
         }
-      }
+      },
     ],
     extra:[
       {

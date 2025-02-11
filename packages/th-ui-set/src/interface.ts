@@ -41,7 +41,7 @@ export type{
   columnType
 }
 
-type componentType='Input'|'InputNumber'|'Select'|'Checkbox';
+type componentType='Input'|'InputNumber'|'Select'|'Checkbox'|'AutoNumber'|'AutoBoxSize'|'AutoBorder'|'AutoColorPicker'|'AutoColorPicker';
 export  interface SetProps{
   //输入类型
   componentType:componentType,

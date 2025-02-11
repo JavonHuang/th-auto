@@ -5,6 +5,7 @@ import './style.css'
 // import ThUI from 'th-ui-plus'
 import ThUI from 'th-ui-plus'
 import ThUIMobile from 'th-ui-mobile'
+import AutoUI from '@/components/index'
 
 // import 'th-ui-plus/lib/src/index.css'
 
@@ -24,4 +25,5 @@ app.directive('drag', drag)
 // app.use(DBelement)
 app.use(ThUI)
 app.use(ThUIMobile)
+app.use(AutoUI)
 app.use(pinia).use(router).mount('#app')
