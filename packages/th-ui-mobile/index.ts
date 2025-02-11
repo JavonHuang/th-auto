@@ -3,11 +3,19 @@ import './src/index.scss'
 import 'vant/lib/index.css';
 
 import ThmButton from './src/button/button.ts'
+import ThmCell from './src/cell/cell.ts'
+import ThmCellGroup from './src/cell/cellGroup.ts'
+import ThmRow from './src/row/row.ts'
+import ThmCol from './src/col/col.ts'
 
 const components: {
   [propName: string]: Component
 } = {
-  ThmButton
+  ThmButton,
+  ThmCell,
+  ThmCellGroup,
+  ThmRow,
+  ThmCol
 }
 
 // 插件声明：声明所有插件

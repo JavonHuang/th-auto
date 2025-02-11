@@ -17,7 +17,7 @@ const baseConfig=(_env:Record<string, string>)=>{
             // 要转化的单位
             unitToConvert: 'px',
             // UI设计稿的大小
-            viewportWidth: 360,
+            viewportWidth: 720,
             // 转换后的精度
             unitPrecision: 6,
             // 转换后的单位
@@ -35,7 +35,7 @@ const baseConfig=(_env:Record<string, string>)=>{
             // 是否转换后直接更换属性值
             replace: true,
             // 忽略某些文件夹下的文件或特定文件，例如 'node_modules' 下的文件
-            exclude: [/src/],
+            exclude: [/src/,/node_modules\/th-ui-plus/],
             // 包含那些文件或者特定文件
             include: [/src\/pages\/mobile/],
             // 是否处理横屏情况

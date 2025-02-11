@@ -30,6 +30,11 @@ const routes: Array<RouteRecordRaw> = [
     component:()=>import('@/pages/preview/index.vue')
   },
   {
+    path:"/mobilePreview",
+    name: "mobilePreview",
+    component:()=>import('@/pages/preview/mobilePreview.vue')
+  },
+  {
     path:"/mobile",
     name: "mobile",
     component:()=>import('@/pages/mobile/index.vue')

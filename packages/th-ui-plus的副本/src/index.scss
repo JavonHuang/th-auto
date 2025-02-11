@@ -1,0 +1,5 @@
+@use './style/index.scss';
+@forward 'element-plus/theme-chalk/src/mixins/config.scss' with (
+  $namespace: 'el' // 自己需要的前缀
+);
+@forward "element-plus/theme-chalk/src/index.scss";
