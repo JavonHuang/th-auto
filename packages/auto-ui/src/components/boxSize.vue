@@ -19,7 +19,7 @@ defineOptions({
 const props = withDefaults(defineProps<{
   modelValue?: any,
 }>(), {
-  modelValue: {},
+  modelValue: null,
 })
 
 watch([numberTop,numberRight,numberBottom,numberLeft],()=>{
@@ -77,7 +77,7 @@ watch(() => props.modelValue, (newVal) => {
     numberBottom.value  = null
     numberLeft.value  = null
   }
-}, { deep: true })
+}, { deep: true ,immediate: true})
 
 const emits = defineEmits<{
   (e: 'update:modelValue', val: any): void

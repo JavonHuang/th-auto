@@ -8,13 +8,13 @@ const ThFormItemSet=():ComponentSetProps=>{
     ],
     props:[
       {
-        componentType:'Checkbox',
-        propsName:'描述',
+        componentType:'AutoCheckbox',
+        propsName:'水平布局',
         props:'inline',
-        value:true
+        value:false
       },
       {
-        componentType:'Input',
+        componentType:'AutoInput',
         propsName:'描述',
         props:'label',
         value:'描述'

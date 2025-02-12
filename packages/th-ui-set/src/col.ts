@@ -8,7 +8,7 @@ const ThColSet=():ComponentSetProps=>{
     ],
     props:[
       {
-        componentType:'InputNumber',
+        componentType:'AutoNumber',
         propsName:'列宽',
         props:'span',
         value:12

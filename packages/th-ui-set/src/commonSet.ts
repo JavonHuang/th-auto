@@ -2,7 +2,7 @@ import { SetProps } from "./interface"
 
 export const commonProps = [
   {
-    componentType:'Checkbox',
+    componentType:'AutoCheckbox',
     propsName:'禁用',
     props:'disabled',
     value:false
@@ -11,13 +11,13 @@ export const commonProps = [
 
 export const commonStyle = [
   {
-    componentType:'AutoNumber',
+    componentType:'AutoNumberSize',
     propsName:'宽',
     props:'width',
     value:''
   },
   {
-    componentType:'AutoNumber',
+    componentType:'AutoNumberSize',
     propsName:'高',
     props:'height',
     value:''

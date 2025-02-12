@@ -28,14 +28,10 @@ const renderText=(e:ILibTreeNode)=>{
 
 </script>
 <style lang="scss" scoped>
-.is-select{
-  border:1px dashed #f89898!important;
+#rootTree{
+  height: 100%;
+  display:flex;
+  flex-direction:column;
+  
 }
-.is-trage{
-  border-color: #409EFF!important;
-  background: #d5eaff;
-}
-// .drag-tool{
-//   border: 1px dashed #DCDFE6;
-// }
 </style>

@@ -25,6 +25,7 @@ import ThDrawer from './src/drawer/drawer.ts'
 import ThDropdown from './src/dropdown/dropdown.ts'
 import ThDropdownItem from './src/dropdown/dropdownItem.ts'
 import ThEmpty from './src/empty/empty.ts'
+import ThFlex from './src/flex/flex.ts'
 import ThForm from './src/form/form.ts'
 import ThFormAuto from './src/formAuto/formAuto.ts'
 import ThFormItem from './src/form/formItem.ts'
@@ -101,6 +102,7 @@ const components: {
   ThDropdown,
   ThDropdownItem,
   ThEmpty,
+  ThFlex,
   ThForm,
   ThFormAuto,
   ThFormItem,

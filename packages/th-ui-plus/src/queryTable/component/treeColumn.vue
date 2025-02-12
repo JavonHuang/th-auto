@@ -90,7 +90,7 @@ const getColumnWidth = (queryColumn: IQueryTableColumn) => {
 }
 
 const getShowColumn=(queryColumn: any)=>{
-  console.log(props.columnShow,props.columnShow.includes(queryColumn['id']),queryColumn.label,queryColumn['id'])
+  // console.log(props.columnShow,props.columnShow.includes(queryColumn['id']),queryColumn.label,queryColumn['id'])
   return props.columnShow.includes(queryColumn['id'])
 }
 </script>

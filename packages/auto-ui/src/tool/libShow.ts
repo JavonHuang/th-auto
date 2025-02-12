@@ -10,6 +10,7 @@ export const libShow:Array<IlibSHow>=  [
         code: "ThRow",
         targetDragalble: true,
         isInit:false,
+        isModel:false,
         props: {
         }
       },
@@ -18,8 +19,18 @@ export const libShow:Array<IlibSHow>=  [
         code: "ThCol",
         targetDragalble: true,
         isInit:false,
+        isModel:false,
         props: {
           span:24
+        }
+      },
+      {
+        name: "Flex容器",
+        code: "ThFlex",
+        targetDragalble: true,
+        isInit:false,
+        isModel:false,
+        props: {
         }
       }
     ]
@@ -33,6 +44,7 @@ export const libShow:Array<IlibSHow>=  [
         code: "ThButton",
         targetDragalble: false,
         isInit:false,
+        isModel:false,
         props: {
           type:'primary'
         }
@@ -48,6 +60,7 @@ export const libShow:Array<IlibSHow>=  [
         code: "ThForm",
         targetDragalble: true,
         isInit:false,
+        isModel:false,
         props: {
         }
       },
@@ -56,6 +69,7 @@ export const libShow:Array<IlibSHow>=  [
         code: "ThFormItem",
         targetDragalble: true,
         isInit:false,
+        isModel:false,
         props: {
         }
       },
@@ -64,6 +78,7 @@ export const libShow:Array<IlibSHow>=  [
         code: "ThInput",
         targetDragalble: false,
         isInit:false,
+        isModel:true,
         props: {
           value:'输入框'
         }
@@ -73,12 +88,29 @@ export const libShow:Array<IlibSHow>=  [
         code: "ThCheckbox",
         targetDragalble: false,
         isInit:false,
+        isModel:true,
         props: {
           value:false
         }
       },
     ]
   },
+  {
+    group: "4",
+    groupName: "data 数据展示",
+    components:[
+      {
+        name: "表格",
+        code: "ThQueryTable",
+        targetDragalble: true,
+        isInit:false,
+        isModel:false,
+        props: {
+
+        }
+      },
+    ]
+  }
 ]
 
 interface IlibSHow { 

@@ -1,17 +1,28 @@
 
 import AutoBorder from './border.vue'
 import AutoBoxSize from './boxSize.vue'
+import AutoCheckbox from './checkbox.vue'
 import AutoColorPicker from './colorPicker.vue'
+import AutoInput from './input.vue'
 import AutoNumber from './number.vue'
+import AutoNumberSize from './numberSize.vue'
+import AutoSelect from './select.vue'
+import AutoTableColumn from './tableColumn.vue'
 import AutoTextAlign from './textAlign.vue'
+
 import type { Component, App } from "vue"
 const components: {
   [propName: string]: Component
 } = {
   AutoBorder,
   AutoBoxSize,
+  AutoCheckbox,
   AutoColorPicker,
+  AutoInput,
   AutoNumber,
+  AutoNumberSize,
+  AutoSelect,
+  AutoTableColumn,
   AutoTextAlign,
 }
 

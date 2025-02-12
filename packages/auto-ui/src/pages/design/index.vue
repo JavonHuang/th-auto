@@ -15,9 +15,11 @@ const { libList } = storeToRefs(store)
 </script>
 <style lang="scss" scoped>
 .design{
+  display: flex;
   border: 1px solid #DCDFE6;
   flex: 1;
   background: #fff;
   padding: 10px;
+  overflow: hidden;
 }
 </style>

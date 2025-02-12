@@ -1,14 +1,12 @@
 <template>
-  <th-input-number v-bind="$attrs"></th-input-number>
+  <th-input  v-bind="$attrs"></th-input>
 </template>
 
 <script setup lang='ts'>
 import {defineOptions } from 'vue'
-
 defineOptions({
-  name:'AutoNumber'
+  name:'AutoInput'
 })
-
 </script>
 
 <style lang='scss' scoped>

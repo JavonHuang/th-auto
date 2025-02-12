@@ -1,6 +1,6 @@
 <template>
   <th-input-number controls-position="right" v-model="size"></th-input-number>
-  <th-select :options="options" controls-position="right" v-model="type"></th-select>
+  <th-select :options="options" v-model="type"></th-select>
   <th-color-picker v-model="color"></th-color-picker>
 </template>
 
@@ -21,7 +21,7 @@ defineOptions({
 const props = withDefaults(defineProps<{
   modelValue?: any,
 }>(), {
-  modelValue: {},
+  modelValue: null,
 })
 
 watch([size,type,color],()=>{
@@ -66,7 +66,7 @@ watch(() => props.modelValue, (newVal) => {
     type.value  = null
     color.value  = null
   }
-}, { deep: true })
+}, { deep: true ,immediate: true})
 
 const emits = defineEmits<{
   (e: 'update:modelValue', val: any): void

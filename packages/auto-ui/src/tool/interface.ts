@@ -15,6 +15,7 @@ interface ILibTreeNode {
  * name 组件名
  * dragalble 允许拖如入子节点
  * isInit 是否已经初始化
+ * isModel 是否绑定初始model值
  * text
  * props 组件属性
  */
@@ -23,6 +24,7 @@ interface componentProps {
   name: string
   targetDragalble?:boolean
   isInit:boolean
+  isModel:boolean
   props: {
     [key:string]:any
   },

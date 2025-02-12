@@ -2,10 +2,10 @@
   <div class="design-setting">
     <th-form :model="propsModel">
       <th-form-item v-for="item in propsList" :key="item.props" :label="item.propsName">
-        <component :is="'Th'+item.componentType" v-bind="item.controlProps" v-model="propsModel[item.props]"></component>
+        <component :is="item.componentType" v-bind="item.controlProps" v-model="propsModel[item.props]"></component>
       </th-form-item>
       <th-form-item v-for="item in extraList" :key="item.props" :label="item.propsName">
-        <component :is="'Th'+item.componentType" v-bind="item.controlProps" v-model="extraModel[item.props]"></component>
+        <component :is="item.componentType" v-bind="item.controlProps" v-model="extraModel[item.props]"></component>
       </th-form-item>
       <th-form-item v-for="item in styleList" :key="item.props" :label="item.propsName">
         <component :is="item.componentType" v-bind="item.controlProps" v-model="styleModel[item.props]"></component>

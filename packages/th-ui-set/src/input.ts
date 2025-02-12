@@ -8,13 +8,13 @@ const ThInputSet=():ComponentSetProps=>{
     ],
     props:[
       {
-        componentType:'Input',
+        componentType:'AutoInput',
         propsName:'占位文本',
         props:'placeholder',
         value:'请输入内容'
       },
       {
-        componentType:'Checkbox',
+        componentType:'AutoCheckbox',
         propsName:'清除按钮',
         props:'clearable',
         value:true

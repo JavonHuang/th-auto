@@ -8,7 +8,7 @@ const ThButtonSet=():ComponentSetProps=>{
     ],
     props:[
       {
-        componentType:'Select',
+        componentType:'AutoSelect',
         propsName:'类型',
         props:'type',
         value:'success',
@@ -25,7 +25,7 @@ const ThButtonSet=():ComponentSetProps=>{
     ],
     extra:[
       {
-        componentType:'Input',
+        componentType:'AutoInput',
         propsName:'文本',
         props:'text',
         value:'默认按钮'

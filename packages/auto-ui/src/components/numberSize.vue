@@ -1,13 +1,13 @@
 <template>
-  <th-color-picker controls-position="right" v-model="color"></th-color-picker>
+  <th-input-number controls-position="right" v-model="number"></th-input-number>
 </template>
 
 <script setup lang='ts'>
 import {defineOptions,ref,watch } from 'vue'
-const color = ref<any>(null)
+const number = ref<any>(null)
 
 defineOptions({
-  name:'AutoColorPicker'
+  name:'AutoNumberSize'
 })
 
 const props = withDefaults(defineProps<{
@@ -16,12 +16,19 @@ const props = withDefaults(defineProps<{
   modelValue: null,
 })
 
-watch(() => color.value, (newVal) => {
-  emits("update:modelValue", newVal?`${newVal}`:null)
+watch(() => number.value, (newVal) => {
+  emits("update:modelValue", newVal?`${newVal}px`:null)
 }, { deep: true })
 
 watch(() => props.modelValue, (newVal) => {
-  color.value = newVal
+  if(newVal){
+    const num =Number(newVal.replace('px',''))
+    if(num !==number.value){
+      number.value = num
+    }
+  }else{
+    number.value=null
+  }
 }, { deep: true ,immediate: true})
 
 const emits = defineEmits<{

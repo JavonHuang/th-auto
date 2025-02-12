@@ -31,16 +31,18 @@ defineOptions({
 const props = withDefaults(defineProps<{
   modelValue?: any,
 }>(), {
-  modelValue: {},
+  modelValue: null,
 })
 
 watch(() => textAlign.value, (newVal) => {
-  emits("update:modelValue", newVal?`${newVal}px`:null)
+  emits("update:modelValue", newVal)
 }, { deep: true })
 
 watch(() => props.modelValue, (newVal) => {
-  textAlign.value = newVal
-}, { deep: true })
+  if(textAlign.value != newVal){
+    textAlign.value = newVal
+  }
+}, { deep: true ,immediate: true})
 
 const emits = defineEmits<{
   (e: 'update:modelValue', val: any): void

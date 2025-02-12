@@ -5,10 +5,19 @@ import { Direction, ILibTreeNode } from "@/tool/interface";
 export const useDesignStore = defineStore('libStore', () => {
   const dragNodeCode=ref<string|null>(null)
   const libList = ref<ILibTreeNode>({
-    id: 'root',
-    component: { targetDragalble: true,isInit:true, code: 'div', name: "根节点", props: {}, style: {width:'100%',height:'100%'} },
+    id: 'rootTree',
+    component: { 
+      targetDragalble: true,
+      isInit:true,
+      isModel:false,
+      code: 'div', 
+      name: "根节点", 
+      props: {}, 
+      style: {width:'100%',height:'100%'} 
+    },
     children: [],
   })
+  const modelValue=ref<any>({})
   const selectNode=ref<ILibTreeNode|null>()
 
   /**
@@ -102,11 +111,11 @@ export const useDesignStore = defineStore('libStore', () => {
   }
     
   
-  return { dragNodeCode,libList,selectNode,insertChildNode,findNode,setDragNode,setSelectNode,updateNode,removeNode } 
+  return { dragNodeCode,libList,modelValue,selectNode,insertChildNode,findNode,setDragNode,setSelectNode,updateNode,removeNode } 
 }, 
-// {
-//   persist: {
-//     pick: ['libList']
-//   }
-// }
+{
+  persist: {
+    pick: ['libList']
+  }
+}
 )

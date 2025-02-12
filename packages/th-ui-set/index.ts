@@ -1,10 +1,11 @@
 import ThButtonSet from './src/button.ts'
 import ThCheckboxSet from './src/checkbox.ts'
-import ThRowSet from './src/row.ts'
 import ThColSet from './src/col.ts'
 import ThFormSet from './src/form.ts'
 import ThFormItemSet from './src/formItem.ts'
 import ThInputSet from './src/input.ts'
+import ThQueryTableSet from './src/queryTable.ts'
+import ThRowSet from './src/row.ts'
 
 
 import { ComponentSetProps,SetProps } from "./src/interface.ts"
@@ -18,6 +19,7 @@ const components: {
   ThRowSet,
   ThFormSet,
   ThFormItemSet,
+  ThQueryTableSet,
   ThInputSet,
 }
 

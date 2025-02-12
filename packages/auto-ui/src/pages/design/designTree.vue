@@ -1,14 +1,14 @@
 <template>
   <component 
+    :class="colKls(item)"
     v-for="item in props.nodeList" 
     :key="item.id" 
     :id="item.id" 
     :is="item.component?.code" 
-    v-drag:target="item.component?.targetDragalble" 
     v-on:click.stop="click(item)"
     v-bind="item.component?.props"
     :style="item.component?.style"
-    :class="colKls(item)"
+    v-model="modelValue[item.id]"
     >
     {{renderText(item)}}
     <DesignTree :node-list="item.children"></DesignTree>
@@ -18,7 +18,9 @@
 <script setup lang="ts">
 import { ILibTreeNode } from "@/tool/interface";
 import { useDesignStore } from "@/store/useDesignStore";
+import { storeToRefs } from "pinia";
 const store = useDesignStore()
+const { modelValue } = storeToRefs(store)
 
 const props = defineProps<{
   nodeList:Array<ILibTreeNode>
@@ -29,7 +31,7 @@ const click = (e:ILibTreeNode) => {
 }
 
 const colKls = (e:ILibTreeNode) => {
-  const classes: string[] = ['drag-tool']
+  const classes: string[] = []
   if (store.selectNode?.id == e.id) { 
     classes.push('is-select')
   }
@@ -52,7 +54,4 @@ const renderText=(e:ILibTreeNode)=>{
   border-color: #409EFF;
   background: #d5eaff;
 }
-// .drag-tool{
-//   border: 1px dashed #DCDFE6;
-// }
 </style>

@@ -2,11 +2,13 @@
   <div :class="cls">
     <th-form ref="ruleFormRef" :rules="props.rules" :style="{ height: isExpandHeight + 'px' }" :model="ruleFormModel" :label-width="props.labelWidth"
       :inline="props.inline">
-      <th-form-item v-for="item in columns" :class="clsFormItem" :inline="props.inline" :key="item.prop"
-        :label="item.label" :prop="item.prop">
-        <slot :name="item.prop" :data="item" :formData="ruleFormModel" v-if="item.slot"></slot>
-        <component :is="item.component" v-bind="item.props" v-on="item.event??{}" v-model="ruleFormModel[item.prop]" v-else></component>
-      </th-form-item>
+      <div :class="clsFormItem" v-for="item in columns" >
+        <th-form-item :inline="props.inline" :key="item.prop"
+          :label="item.label" :prop="item.prop">
+          <slot :name="item.prop" :data="item" :formData="ruleFormModel" v-if="item.slot"></slot>
+          <component :is="item.component" v-bind="item.props" v-on="item.event??{}" v-model="ruleFormModel[item.prop]" v-else></component>
+        </th-form-item>
+      </div>
     </th-form>
     <div :class="clsSubmit">
       <th-button :type="'primary'" v-on:click="onQuery">

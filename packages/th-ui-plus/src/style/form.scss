@@ -8,7 +8,7 @@
   @include m(inline) {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: flex-start;
     overflow: hidden;
     transition: height 0.5s ease-in-out; /* 0.5秒过渡时间，缓动效果 */
   }
@@ -18,7 +18,7 @@
   @include m(inline) {
     padding-right: 12px!important;
     margin-right: 0!important;
-    width: 100%!important;
+    width: 100%;
     .#{$orgnamespace}-form-item__content{
       min-width: 0;
       width: 100%!important;

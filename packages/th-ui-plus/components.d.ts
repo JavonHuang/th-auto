@@ -23,6 +23,7 @@ import {ThDrawerProps} from './src/drawer/drawer'
 import {ThDropdownProps} from './src/dropdown/dropdown'
 import {ThDropdownItemProps} from './src/dropdown/dropdownItem'
 import {ThEmptyProps} from './src/empty/empty'
+import {ThFlexProps} from './src/flex/flex'
 import {ThFormProps} from './src/form/form'
 import {ThFormAutoProps} from './src/formAuto/formAuto'
 import {ThFormItemProps} from './src/form/formItem'
@@ -95,6 +96,7 @@ declare module 'vue' {
     ThDropdown:ThDropdownProps,
     ThDropdownItem:ThDropdownItemProps,
     ThEmpty:ThEmptyProps,
+    ThFlex:ThFlexProps,
     ThForm:ThFormProps,
     ThFormAuto:ThFormAutoProps,
     ThFormItem:ThFormItemProps,

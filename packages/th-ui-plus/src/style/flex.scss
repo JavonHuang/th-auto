@@ -1,0 +1,11 @@
+@use 'common/var' as *;
+@use 'mixins/mixins' as *;
+@use 'sass:map';
+
+@include base(flex) {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}

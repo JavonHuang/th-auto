@@ -1,27 +1,29 @@
 <template>
-  <th-color-picker controls-position="right" v-model="color"></th-color-picker>
+  <th-checkbox v-model="checkbox"></th-checkbox>
 </template>
 
 <script setup lang='ts'>
 import {defineOptions,ref,watch } from 'vue'
-const color = ref<any>(null)
+const checkbox = ref<any>(false)
 
 defineOptions({
-  name:'AutoColorPicker'
+  name:'AutoCheckbox'
 })
 
 const props = withDefaults(defineProps<{
   modelValue?: any,
 }>(), {
-  modelValue: null,
+  modelValue: false,
 })
 
-watch(() => color.value, (newVal) => {
-  emits("update:modelValue", newVal?`${newVal}`:null)
+watch(() => checkbox.value, (newVal) => {
+  emits("update:modelValue", newVal)
 }, { deep: true })
 
 watch(() => props.modelValue, (newVal) => {
-  color.value = newVal
+  if(newVal!==checkbox.value){
+    checkbox.value = newVal
+  }
 }, { deep: true ,immediate: true})
 
 const emits = defineEmits<{

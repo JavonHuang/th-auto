@@ -148,7 +148,7 @@ const remove =(n:ILibTreeNode)=>{
       flex-grow: 1;
       flex: 1;
       padding: 12px 20px;
-      overflow: auto;
+      overflow:hidden;
       display: flex;
       flex-direction: column;
     }
