@@ -25,13 +25,13 @@ const ThQueryTableSet=():ComponentSetProps=>{
                   {
                     columnType:'link',
                     prop:'name',
-                    label:'超链超链接23223323接2',
+                    label:'超接3接2',
                     width:180,
                   },
                   {
                     columnType:'link',
                     prop:'name',
-                    label:'超链接23223323',
+                    label:'链323',
                     width:180,
                   },
                 ]

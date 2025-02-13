@@ -4,7 +4,6 @@
 @use 'mixins/config' as *;
 
 @include base(form-auto) {
-  height: 50px;
   @include child-level(form){
     display: flex;
     flex-wrap: wrap;

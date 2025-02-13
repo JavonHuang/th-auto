@@ -32,7 +32,7 @@ interface IComponentEvent{
   [key: string]: any;
 }
 
-type columnType=''|'ThInput'|'ThDatePicker'|'ThSelect';
+type columnType=''|'ThInput'|'ThDatePicker'|'ThSelect'|'ThInputNumber'|'ThCheckbox';
 
 export type{
   ThRef,

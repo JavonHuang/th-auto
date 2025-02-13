@@ -10,7 +10,7 @@ export type IQueryTableColumn={
   label:string,
   width?:number,
   minWidth?:number,
-  fixed?:string,
+  fixed?:'right'|'left'|null,
   show?:boolean,
   children?:Array<IQueryTableColumn>,
 }

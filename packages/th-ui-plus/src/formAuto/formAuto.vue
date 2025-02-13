@@ -42,6 +42,7 @@ const props = withDefaults(defineProps<IFormAuto>(), {
   modelValue: {},
   rules: {},
   showOperation: true,
+  query:false
 })
 
 //样式处理
