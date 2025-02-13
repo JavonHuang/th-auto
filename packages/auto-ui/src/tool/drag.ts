@@ -4,16 +4,7 @@ import { storeToRefs } from "pinia"
 import { Direction } from "@/tool/interface"
 import { findLib } from './libShow'
 import AutoUISet, { getProps } from 'th-ui-set'
-
-export const generateID = ():string => { 
-  let timestamp = new Date().getTime();
-  const uuid = 'xxxxxxxx'.replace(/[xy]/g, function(c) {
-    const r = (timestamp + Math.random() * 16) % 16 | 0;
-    timestamp = Math.floor(timestamp / 16);
-    return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
-  });
-  return uuid;
-}
+import { generateID } from "./treeTool"
 
 const drag: Directive = {
   mounted(el: HTMLDivElement, binding, vnode, prevVnode) { 

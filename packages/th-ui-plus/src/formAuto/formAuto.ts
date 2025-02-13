@@ -24,10 +24,11 @@ interface FormAutoColumnsProps{
 export type {FormAutoColumnsProps}
 
 /**
- * @onSubmit 表单提交
+ * @submit 表单提交
  */
-interface ThFormAutoInstance extends ThRef<FormInstance>{
-  onSubmit:()=>Promise<any>,
+interface ThFormAutoInstance{
+  submit:()=>Promise<any>,
+  resetForm:()=>void
 }
 
 export type {ThFormAutoInstance}

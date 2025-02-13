@@ -27,11 +27,11 @@
     </th-icon>
   </th-button>
   <th-dialog v-model="showDialog">
-    <th-form-auto :label-width="100" :show-operation="false" v-model="nodeModel" :columns="columnsForm" :rules="rules">
+    <th-form-auto ref="formRef" :label-width="100" :show-operation="false" v-model="nodeModel" :columns="columnsForm" :rules="rules">
     </th-form-auto>
     <th-row>
       <th-col :offset="21">
-        <th-button type="primary">保存</th-button>
+        <th-button type="primary" v-on:click=addNode()>保存</th-button>
         <th-button v-on:click="cancel">取消</th-button>
       </th-col>
     </th-row>
@@ -40,8 +40,11 @@
 
 <script setup lang='ts'>
 import { Plus,DeleteFilled } from '@element-plus/icons-vue'
-import { FormAutoColumnsProps } from 'th-ui-plus'
+import { FormAutoColumnsProps,ThFormAutoInstance } from 'th-ui-plus'
+import { removeNode,insertChildNode, generateID } from '@/tool/treeTool'
 import {defineOptions,watch,ref, reactive } from 'vue'
+import _ from 'lodash'
+const formRef=ref<ThFormAutoInstance>()
 const defaultProps = {
   children: 'children',
   label: 'label',
@@ -160,17 +163,21 @@ const rules=reactive({
     { required: true, message: '请输入列名', trigger: 'blur' },
   ]
 })
+
 const columns = ref<Array<any>>([])
 const showDialog = ref<boolean>(false)
 const nodeModel = ref<any>({
-  columnType:'time',
-  prop:'time',
-  label:'时分秒',
+  columnType:null,
+  prop:null,
+  label:null,
   width:null,
   minWidth:null,
   fixed:null,
-  show:true
+  show:true,
+  children:[],
+  id:generateID()
 })
+const chosenNode=ref<any>(null)
 
 
 const props = withDefaults(defineProps<{
@@ -185,14 +192,41 @@ watch(() => props.modelValue, (newVal) => {
   }
 }, { deep: true ,immediate: true})
 
-const append=(data)=>{
+const append=(data:any)=>{
+  nodeModel.value.id=generateID()
+  chosenNode.value=data
   showDialog.value=true
 }
-const remove=(data)=>{}
+const remove=(data:any)=>{
+  chosenNode.value=data
+  let result = removeNode(columns.value,data.id)
+  emits("update:modelValue",  result)
+}
 
 const cancel=()=>{
   showDialog.value=false
+  chosenNode.value=null
+  formRef.value?.resetForm()
 }
+
+const addNode=()=>{
+  formRef.value?.submit().then((val)=>{
+    if(val){
+      const val =_.cloneDeep(nodeModel.value)
+      if(chosenNode.value){
+        insertChildNode(columns.value,chosenNode.value.id,val)
+      }else{
+        columns.value.push(val)
+      }
+      cancel()
+      emits("update:modelValue",  columns.value)
+    }
+  })
+}
+
+const emits = defineEmits<{
+  (e: 'update:modelValue', val: any): void
+}>()
 </script>
 
 <style lang='scss' scoped>

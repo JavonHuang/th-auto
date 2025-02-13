@@ -19,7 +19,7 @@
 <script setup lang='ts'>
 import { computed, nextTick, onMounted, ref, watch } from 'vue'
 import { useName } from "../hook/useName"
-import { FormAutoColumnsProps } from './formAuto';
+import { FormAutoColumnsProps, ThFormAutoInstance } from './formAuto';
 import { FormInstance } from 'element-plus';
 import { ThRef } from '../common';
 import * as _ from 'lodash';
@@ -87,7 +87,7 @@ const init = () => {
 }
 
 const submit = () => {
-  new Promise((resolve, reject) => {
+  return new Promise((resolve, reject) => {
     ruleFormRef.value!.getRef().validate((valid, fields) => {
       if (valid) {
         resolve(ruleFormModel)
@@ -118,6 +118,8 @@ const emits = defineEmits<{
   (e: 'onSubmit', val: any): void
   (e: 'update:modelValue', val: any): void
 }>()
+
+defineExpose<ThFormAutoInstance>({submit,resetForm })
 
 </script>
 
