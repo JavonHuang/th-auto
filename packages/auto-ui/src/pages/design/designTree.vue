@@ -48,7 +48,7 @@ const renderText=(e:ILibTreeNode)=>{
 </script>
 <style lang="scss" scoped>
 .is-select{
-  border:1px dashed #f89898;
+  border:1px dashed #f89898!important;
 }
 .is-trage{
   border-color: #409EFF;

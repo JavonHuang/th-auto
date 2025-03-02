@@ -1,7 +1,7 @@
 import { ComponentSetProps } from "./interface"
 import {commonProps,commonStyle} from "./commonSet"
 
-const ThCheckboxSet=():ComponentSetProps=>{
+const ThColorPickerSet=():ComponentSetProps=>{
   return {
     style:[
       ...commonStyle
@@ -12,4 +12,4 @@ const ThCheckboxSet=():ComponentSetProps=>{
     extra:[]
   }
 }
-export default ThCheckboxSet
+export default ThColorPickerSet

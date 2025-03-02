@@ -1,7 +1,7 @@
 import { ComponentSetProps } from "./interface"
 import {commonStyle} from "./commonSet"
 
-const ThButtonSet=():ComponentSetProps=>{
+const ThLinkSet=():ComponentSetProps=>{
   return {
     style:[
       ...commonStyle,
@@ -29,9 +29,9 @@ const ThButtonSet=():ComponentSetProps=>{
         componentType:'AutoInput',
         propsName:'文本',
         props:'text',
-        value:'默认按钮'
+        value:'超链接'
       },
     ]
   }
 }
-export default ThButtonSet
+export default ThLinkSet

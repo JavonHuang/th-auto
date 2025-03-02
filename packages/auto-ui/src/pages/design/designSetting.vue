@@ -2,7 +2,7 @@
   <div class="design-setting">
     <th-form :model="propsModel">
       <div v-for="item in propsList" :key="item.props">
-        <span>{{item.propsName}}</span>
+        <span class="name">{{item.propsName}}</span>
         <component :is="item.componentType" v-bind="item.controlProps" v-model="propsModel[item.props]"></component>
       </div>
       <div v-for="item in extraList" :key="item.props">
@@ -117,11 +117,8 @@ watch(styleModel,()=>{
   width: 200px;
   // box-shadow: 0px 0px 12px rgba(0, 0, 0, .12);
   background:#ffffff;
-  .group{
-    text-align: left;
-    font-weight: bold;
-    border-bottom: 1px solid #DCDFE6;
-    margin-bottom: 8px;
+  .name{
+    font-size: 12px;
   }
 }
 </style>

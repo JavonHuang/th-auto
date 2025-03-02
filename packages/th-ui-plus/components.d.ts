@@ -10,6 +10,7 @@ import {ThButtonProps} from './src/button/button'
 import {ThCalendarProps} from './src/calendar/calendar'
 import {ThCardProps} from './src/card/card'
 import {ThCarouselProps} from './src/carousel/carousel'
+import {ThCascaderProps} from './src/cascader/cascader'
 import {ThCheckboxProps} from './src/checkbox/checkbox'
 import {ThCheckboxGroupProps} from './src/checkbox/checkboxGroup'
 import {ThColProps} from './src/col/col'
@@ -83,6 +84,7 @@ declare module 'vue' {
     ThCalendar:ThCalendarProps,
     ThCard:ThCardProps,
     ThCarousel:ThCarouselProps,
+    ThCascader:ThCascaderProps,
     ThCheckbox:ThCheckboxProps,
     ThCheckboxGroup:ThCheckboxGroupProps,
     ThCol:ThColProps,

@@ -11,8 +11,6 @@ export const libShow:Array<IlibSHow>=  [
         targetDragalble: true,
         isInit:false,
         isModel:false,
-        props: {
-        }
       },
       {
         name: "列",
@@ -20,9 +18,6 @@ export const libShow:Array<IlibSHow>=  [
         targetDragalble: true,
         isInit:false,
         isModel:false,
-        props: {
-          span:24
-        }
       },
       {
         name: "Flex容器",
@@ -30,8 +25,6 @@ export const libShow:Array<IlibSHow>=  [
         targetDragalble: true,
         isInit:false,
         isModel:false,
-        props: {
-        }
       }
     ]
   },
@@ -40,14 +33,18 @@ export const libShow:Array<IlibSHow>=  [
     groupName: "Basic 基础组件",
     components: [
       {
+        name: "链接​",
+        code: "ThLink",
+        targetDragalble: false,
+        isInit:false,
+        isModel:false,
+      },
+      {
         name: "按钮",
         code: "ThButton",
         targetDragalble: false,
         isInit:false,
         isModel:false,
-        props: {
-          type:'primary'
-        }
       },
     ]
   },
@@ -61,8 +58,6 @@ export const libShow:Array<IlibSHow>=  [
         targetDragalble: true,
         isInit:false,
         isModel:false,
-        props: {
-        }
       },
       {
         name: "表单项",
@@ -70,18 +65,13 @@ export const libShow:Array<IlibSHow>=  [
         targetDragalble: true,
         isInit:false,
         isModel:false,
-        props: {
-        }
       },
       {
-        name: "输入框",
-        code: "ThInput",
+        name: "级联选择器",
+        code: "ThCascader",
         targetDragalble: false,
         isInit:false,
         isModel:true,
-        props: {
-          value:'输入框'
-        }
       },
       {
         name: "勾选框",
@@ -89,9 +79,34 @@ export const libShow:Array<IlibSHow>=  [
         targetDragalble: false,
         isInit:false,
         isModel:true,
-        props: {
-          value:false
-        }
+      },
+      {
+        name: "颜色选择器",
+        code: "ThColorPicker",
+        targetDragalble: false,
+        isInit:false,
+        isModel:true,
+      },
+      {
+        name: "日期选择器",
+        code: "ThDatePicker",
+        targetDragalble: false,
+        isInit:false,
+        isModel:true,
+      },
+      {
+        name: "输入框",
+        code: "ThInput",
+        targetDragalble: false,
+        isInit:false,
+        isModel:true,
+      },
+      {
+        name: "数字输入框",
+        code: "ThInputNumber",
+        targetDragalble: false,
+        isInit:false,
+        isModel:true,
       },
     ]
   },

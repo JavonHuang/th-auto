@@ -25,7 +25,7 @@ interface componentProps {
   targetDragalble?:boolean
   isInit:boolean
   isModel:boolean
-  props: {
+  props?: {
     [key:string]:any
   },
   style?: {

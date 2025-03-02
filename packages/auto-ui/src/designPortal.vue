@@ -116,6 +116,9 @@ const remove =(n:ILibTreeNode)=>{
                 margin: auto;
               }
             }
+            .com-name{
+              font-size: 12px;
+            }
           }
         }
       }

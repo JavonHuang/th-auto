@@ -12,6 +12,7 @@ import ThButton from './src/button/button.ts'
 import ThCalendar from './src/calendar/calendar.ts'
 import ThCard from './src/card/card.ts'
 import ThCarousel from './src/carousel/carousel.ts'
+import ThCascader from './src/cascader/cascader.ts'
 import ThCheckbox from './src/checkbox/checkbox.ts'
 import ThCheckboxGroup from './src/checkbox/checkboxGroup.ts'
 import ThCol from './src/col/col.ts'
@@ -89,6 +90,7 @@ const components: {
   ThCalendar,
   ThCard,
   ThCarousel,
+  ThCascader,
   ThCheckbox,
   ThCheckboxGroup,
   ThCol,
