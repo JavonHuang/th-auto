@@ -52,6 +52,7 @@ defineOptions({
 const props = withDefaults(defineProps<IQueryTable>(), {
   selectable: false,
   border: false,
+  queryModel:{}
 })
 
 //样式处理
@@ -130,6 +131,9 @@ const getParams = (): any => {
   return {
     pageSize: pageSize.value,
     currentPage: currentPage.value,
+    data:{
+      ...props.queryModel
+    }
   }
 }
 

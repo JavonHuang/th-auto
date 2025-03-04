@@ -20,6 +20,7 @@ export interface IQueryTable{
   columns: Array<IQueryTableColumn>,
   selectable?:boolean,
   border?:boolean,
+  queryModel?:any
 }
 
 export type ThQueryTableProps =  typeof ThQueryTable 

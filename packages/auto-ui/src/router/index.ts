@@ -45,6 +45,11 @@ const routes: Array<RouteRecordRaw> = [
     component:()=>import('@/portal.vue'),
     children:[
       {
+        path: '/user', // 通配符路由，匹配任何路径
+        name: 'user', // 命名路由 'NotFound'
+        component: ()=>import('@/view/user/index.vue') // 404 页面组件
+      },
+      {
         path: '/notfound', // 通配符路由，匹配任何路径
         name: 'NotFound', // 命名路由 'NotFound'
         component: ()=>import('@/pages/common/notFound.vue') // 404 页面组件

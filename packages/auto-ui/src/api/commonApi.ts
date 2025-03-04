@@ -3,14 +3,14 @@ import * as Mock from "mockjs"
 export default {
   login(data: { name: string, passworld: string }) {
     return request({
-      url: '/api/vue/login',
+      url: '/api/system/login',
       type: 'post',
       data
     })
   },
   menu(data={}) {
     return request({
-      url: '/api/vue/menu',
+      url: '/api/menu/list',
       type: 'post',
       data
     })
