@@ -1,9 +1,23 @@
 <template>
-  <th-link type="primary">8989</th-link>
+  <th-link :class="cls" type="primary">{{props.cellValue}}</th-link>
 </template>
 
 <script setup lang='ts'>
-import { ref, reactive } from 'vue'
+import { computed } from 'vue';
+import { useName } from '../../hook/useName';
+
+defineOptions({
+  name: 'ThQueryLinkColumn'
+})
+//样式处理
+const ns = useName('query-table-link-column')
+const cls = computed(() => [
+  ns.base(),
+])
+
+const props = withDefaults(defineProps<{row: any, column: any, cellValue: any, index: number}>(), {
+
+})
 
 </script>
 

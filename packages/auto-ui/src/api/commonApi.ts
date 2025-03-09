@@ -10,7 +10,7 @@ export default {
   },
   menu(data={}) {
     return request({
-      url: '/api/menu/list',
+      url: '/api/menu/queryMenuList',
       type: 'post',
       data
     })

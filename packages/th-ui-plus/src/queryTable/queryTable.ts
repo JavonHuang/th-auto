@@ -5,7 +5,7 @@ export const ThQueryTable = withInstall(QueryTable)
 
 export type IQueryTableColumn={
   isSlot?:Boolean,
-  columnType?:'text'|'number'|'thousands'|'year'|'month'|'date'|'dateTime'|'time'|'link'
+  columnType?:'text'|'number'|'thousands'|'year'|'month'|'date'|'dateTime'|'time'|'link'|'action'
   prop:string,
   label:string,
   width?:number,
@@ -13,6 +13,12 @@ export type IQueryTableColumn={
   fixed?:'right'|'left'|null,
   show?:boolean,
   children?:Array<IQueryTableColumn>,
+  actionList?:Array<IAction>
+}
+
+export interface IAction{
+  onClick:(e:{row: any, column: any, cellValue: any, index: number})=>void,
+  type:'delete'|'create'|'edit'
 }
 
 export interface IQueryTable{
@@ -20,7 +26,11 @@ export interface IQueryTable{
   columns: Array<IQueryTableColumn>,
   selectable?:boolean,
   border?:boolean,
-  queryModel?:any
+  queryModel?:any,
+  showIndex?:boolean,
+  create?:()=> void,
+  delete?:()=> void,
+  selectionChange?:(...args:any[])=>void
 }
 
 export type ThQueryTableProps =  typeof ThQueryTable 

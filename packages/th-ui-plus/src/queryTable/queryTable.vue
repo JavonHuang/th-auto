@@ -2,7 +2,8 @@
   <div :class="cls">
     <div :class="clsheader">
       <div>
-        <th-button :type="'primary'">新增<th-icon><DocumentAdd/></th-icon></th-button>
+        <th-button type="primary" v-on:click="props.create">新增<th-icon><DocumentAdd/></th-icon></th-button>
+        <th-button type="danger" v-on:click="props.delete">删除<th-icon><Delete/></th-icon></th-button>
         <th-button>导出</th-button>
       </div>
       <th-popover trigger="hover">
@@ -13,8 +14,9 @@
       </th-popover>
     </div>
     <th-table height="100%" :data="tableData" :border="props.border" ref="tableRef"
-      @selection-change="handleSelectionChange">
-      <th-table-column v-if="props.selectable" type="selection" :selectable="selectable" width="55"></th-table-column>
+      @selection-change="props.selectionChange">
+      <th-table-column v-if="props.selectable" type="selection" :selectable="selectable" width="30"></th-table-column>
+      <th-table-column v-if="props.showIndex" type="index" width="35"></th-table-column>
       <tree-column :column-show="columnsShowList" :children="item.children" v-bind="item" v-for="item in columns">
         <template v-for="(_, name) in $slots" #[name]="slotData">
           <slot :name v-bind="slotData || {}"></slot>
@@ -23,7 +25,7 @@
     </th-table> 
     <div :class="clsPagination">
       <th-pagination size="small" v-model:current-page="currentPage" v-model:page-size="pageSize"
-        :page-sizes="[100, 200, 300, 400]" layout="total, sizes, prev, pager, next, jumper" :total="total"
+        :page-sizes="[10, 20, 50, 100]" layout="total, sizes, prev, pager, next, jumper" :total="total"
         @size-change="handleSizeChange" @current-change="handleCurrentChange">
       </th-pagination>
     </div>
@@ -32,7 +34,7 @@
 
 <script setup lang='ts'>
 import { ref, computed, onMounted, nextTick,h, watch } from 'vue'
-import {Grid,DocumentAdd} from '@element-plus/icons-vue'
+import {Grid,DocumentAdd,Delete} from '@element-plus/icons-vue'
 import { useName } from "../hook/useName"
 import { IQueryTableColumn, IQueryTable, QueryTableInstance } from './queryTable'
 import { TableInstance } from 'element-plus'
@@ -52,6 +54,7 @@ defineOptions({
 const props = withDefaults(defineProps<IQueryTable>(), {
   selectable: false,
   border: false,
+  showIndex:false,
   queryModel:{}
 })
 
@@ -69,7 +72,7 @@ const clsPagination = computed(() => [
 const tableRef=ref<ThRef<TableInstance>>()
 const tableData = ref([])
 const currentPage = ref(1)
-const pageSize = ref(100)
+const pageSize = ref(10)
 const total = ref(0)
 const columns = ref<Array<IQueryTableColumn>>([])
 const defaultColumnsShowList = ref<Array<any>>([])
@@ -150,7 +153,6 @@ const selectable = (row: any) => true
 
 
 const multipleTableRef = ref<TableInstance>()
-const multipleSelection = ref<[]>([])
 
 const toggleSelection = (rows?: [], ignoreSelectable?: boolean) => {
   if (rows) {
@@ -164,10 +166,6 @@ const toggleSelection = (rows?: [], ignoreSelectable?: boolean) => {
   } else {
     multipleTableRef.value!.clearSelection()
   }
-}
-
-const handleSelectionChange = (val: []) => {
-  multipleSelection.value = val
 }
 
 const reflesh=()=>{

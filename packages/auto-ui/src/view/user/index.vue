@@ -5,7 +5,17 @@
         <th-input v-model="formData[data.prop]"></th-input>
       </template>
     </th-query>
-    <th-query-table ref="queryTableRef" :queryModel="queryModel" :border="true" :selectable="true" :api="userApi.pageList" :columns="tableColumns">
+    <th-query-table 
+      ref="queryTableRef" 
+      :queryModel="queryModel" 
+      :selectable="true" 
+      :api="userApi.pageList" 
+      :columns="tableColumns"
+      :create="create"
+      :delete="deleteUser"
+      :show-index="true"
+      :selection-change="selectionChange"
+    >
       <template #name="scope">我的名字：{{ scope.row.name }}</template>
       <template #age="scope">我的年龄：{{ scope.row.age }}</template>
     </th-query-table>
@@ -14,11 +24,11 @@
 
 <script setup lang='ts'>
 import { QueryColumnsProps } from 'th-ui-plus';
-import { ref,reactive } from 'vue';
+import { ref } from 'vue';
 import userApi from "@/api/userApi"
-
 import { IQueryTableColumn, QueryTableInstance } from 'th-ui-plus';
 
+const multipleSelection = ref<any[]>([])
 const tableColumns=ref<Array<IQueryTableColumn>>([
   {
     columnType:'link',
@@ -35,15 +45,38 @@ const tableColumns=ref<Array<IQueryTableColumn>>([
     columnType:'text',
     prop:'password',
     label:'用户密码',
+  },
+  {
+    columnType:'action',
+    prop:'userId',
+    label:'操作',
+    fixed:'right',
+    width:200,
+    actionList:[
+      {
+        onClick:({})=>{},
+        type:'create'
+      },
+      {
+        onClick:({})=>{},
+        type:'edit'
+      },
+      {
+        onClick:({cellValue})=>{
+          userApi.deleteUser([cellValue]).then(()=>{
+            onQuery(queryModel)
+          })
+        },
+        type:'delete'
+      }
+    ]
   }
 ])
 const queryModel=ref({
   userName:null,
   createTime:null
 })
-
 const queryTableRef=ref<QueryTableInstance>()
-
 const columns=ref<Array<QueryColumnsProps>>([
   {
     component:'ThInput',
@@ -61,6 +94,25 @@ const onQuery=(e:any)=>{
   queryTableRef.value?.reflesh()
 }
 
+const create =async ()=>{
+ await userApi.addUser([
+    {
+      userName:'javon',
+      password:'6789'
+    }
+  ])
+  onQuery(queryModel)
+}
+
+const deleteUser = () => {
+  userApi.deleteUser(multipleSelection.value).then(()=>{
+    onQuery(queryModel)
+  })
+}
+
+const selectionChange=(e:any[])=>{
+  multipleSelection.value =e.map((row)=>row.userId)
+}
 </script>
 
 <style lang='scss' scoped>

@@ -36,6 +36,7 @@ import ThInput from './src/input/input.ts'
 import ThLink from './src/link/link.ts'
 import ThMention from './src/mention/mention.ts'
 import ThMenu from './src/menu/menu.ts'
+import ThSubMenu from './src/menu/subMenu.ts'
 import ThMenuItem from './src/menu/menuItem.ts'
 import ThInputNumber  from './src/number/number.ts'
 import ThPageHeader from './src/pageHeader/pageHeader.ts'
@@ -114,6 +115,7 @@ const components: {
   ThLink,
   ThMention,
   ThMenu,
+  ThSubMenu,
   ThMenuItem,
   ThInputNumber,
   ThPageHeader,

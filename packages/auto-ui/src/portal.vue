@@ -4,12 +4,8 @@
     <div class="main">
       <div class="menu">
         <th-menu default-active="2" class="th-menu-vertical-demo" @open="handleOpen" @close="handleClose">
-          <th-menu-item v-for="item in systemMenu" :index="item.name" v-on:click="goPage(item)">
-            <th-icon>
-              <Document />
-            </th-icon>
-            <span>{{ item.name }}</span>
-          </th-menu-item>
+          <ThTreeMenu  v-for="item in systemMenu" v-bind="item" :index="item.menuId">
+          </ThTreeMenu>
         </th-menu>
       </div>
       <div class="contant">
@@ -20,10 +16,10 @@
 </template>
 
 <script setup lang='ts'>
-import { Document } from '@element-plus/icons-vue'
 import { useGlobalStore } from "@/store/useGlobalStore"
-import { router } from '@/router/index'
 import { storeToRefs } from "pinia";
+import ThTreeMenu from '@/view/components/treeMenuItem.vue'
+
 const globalStore = useGlobalStore()
 const { systemMenu } = storeToRefs(globalStore) // 把仓库中的数据变成响应式
 
@@ -32,12 +28,6 @@ const handleOpen = (key: string, keyPath: string[]) => {
 }
 const handleClose = (key: string, keyPath: string[]) => {
   console.log(key, keyPath)
-}
-
-const goPage = (e: any) => {
-  router.push({
-    name: e.name,
-  })
 }
 </script>
 

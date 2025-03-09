@@ -34,6 +34,8 @@ import {ThInputProps} from './src/input/input'
 import {ThLinkProps} from './src/link/link'
 import {ThMentionProps} from './src/mention/mention'
 import {ThMenuProps} from './src/menu/menu'
+import {ThSubMenuProps} from './src/menu/subMenu'
+import {ThMenuItemProps} from './src/menu/menuItem'
 import {ThInputNumberProps} from './src/number/number'
 import {ThPageHeaderProps} from './src/pageHeader/pageHeader'
 import {ThPageLayoutProps} from './src/pageLayout/pageLayout'
@@ -108,6 +110,8 @@ declare module 'vue' {
     ThLink:ThLinkProps,
     ThMention:ThMentionProps,
     ThMenu:ThMenuProps,
+    ThSubMenu:ThSubMenuProps,
+    ThMenuItem:ThMenuItemProps,
     ThInputNumber:ThInputNumberProps,
     ThPageHeader:ThPageHeaderProps,
     ThPageLayout:ThPageLayoutProps,

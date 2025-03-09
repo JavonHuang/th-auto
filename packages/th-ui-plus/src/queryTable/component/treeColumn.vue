@@ -19,6 +19,8 @@ import { IQueryTableColumn } from '../queryTable';
 import NumberColumn from './../component/numberColumn.vue'
 import ThousandsColumn from './../component/thousandsColumn.vue'
 import TinkColumn from './../component/linkColumn.vue'
+import ActionColumn from './../component/actionColumn.vue'
+
 import { ElTableColumn } from 'element-plus'
 import { computed, h } from 'vue';
 import { useName } from '../../hook/useName';
@@ -65,6 +67,8 @@ const getColumnFormatter = (queryColumn: IQueryTableColumn) => {
         return h(ThousandsColumn,{row,column,cellValue,index})
       case 'link':
         return h(TinkColumn,{row,column,cellValue,index})
+      case 'action':
+        return h(ActionColumn,{row,column,cellValue,index,queryColumn})
       default:
         return cellValue
     }
