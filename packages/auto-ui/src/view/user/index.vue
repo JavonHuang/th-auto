@@ -24,10 +24,22 @@
 
 <script setup lang='ts'>
 import { QueryColumnsProps } from 'th-ui-plus';
-import { ref } from 'vue';
+import { ref,h,render,getCurrentInstance, onMounted } from 'vue';
 import userApi from "@/api/userApi"
 import { IQueryTableColumn, QueryTableInstance } from 'th-ui-plus';
 
+import { useGlobalStore } from "@/store/useGlobalStore"
+const globalStore = useGlobalStore()
+
+
+import myDialog from './dialog/createDialog.vue';
+const instance = getCurrentInstance();
+console.log(instance)
+
+onMounted(()=>{
+  render(h(myDialog,{}),instance?.ctx.$el)
+
+})
 const multipleSelection = ref<any[]>([])
 const tableColumns=ref<Array<IQueryTableColumn>>([
   {
@@ -95,6 +107,7 @@ const onQuery=(e:any)=>{
 }
 
 const create =async ()=>{
+  globalStore.update()
  await userApi.addUser([
     {
       userName:'javon',
