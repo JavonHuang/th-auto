@@ -9,7 +9,7 @@ import AutoUI from '@/components/index'
 
 // import 'th-ui-plus/lib/src/index.css'
 
-// import ElementPlus from 'element-plus'
+import ElementPlus from 'element-plus'
 // import 'element-plus/dist/index.css'
 
 // import DBelement from "@/components/index"
@@ -21,7 +21,7 @@ import pinia from '@/store/index'
 const app=createApp(Main)
 app.directive('drag', drag)
 
-// app.use(ElementPlus)
+app.use(ElementPlus)
 // app.use(DBelement)
 app.use(ThUI)
 app.use(ThUIMobile)

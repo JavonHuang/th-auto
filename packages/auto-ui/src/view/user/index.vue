@@ -23,11 +23,11 @@
 </template>
 
 <script setup lang='ts'>
-import { QueryColumnsProps } from 'th-ui-plus';
 import { ref,h,render,getCurrentInstance, onMounted } from 'vue';
 import userApi from "@/api/userApi"
 import { IQueryTableColumn, QueryTableInstance } from 'th-ui-plus';
-
+import { QueryColumnsProps, useThDialog } from 'th-ui-plus';
+import moment from 'moment'
 import { useGlobalStore } from "@/store/useGlobalStore"
 const globalStore = useGlobalStore()
 
@@ -36,9 +36,22 @@ import myDialog from './dialog/createDialog.vue';
 const instance = getCurrentInstance();
 console.log(instance)
 
-onMounted(()=>{
-  render(h(myDialog,{}),instance?.ctx.$el)
+const used=useThDialog(myDialog,instance!)
 
+onMounted(()=>{
+  // render(h(myDialog,{}),instance?.ctx.$el)
+  used.init()
+  moment.updateLocale('zh', {
+      week: {
+          dow: 1, // dow: day of week (0 = Sunday, 1 = Monday, ..., 6 = Saturday)
+          doy: 3  // doy: day of year (starting at 1; 4 means the first week starts on the first Tuesday)
+      }
+  });
+  const startOfWeek = moment().year(2030).week(1).startOf('week');
+  const endOfWeek = moment().year(2030).week(1).endOf('week');
+  
+  console.log('开始日期:', startOfWeek.format('YYYY-MM-DD'));
+  console.log('结束日期:', endOfWeek.format('YYYY-MM-DD'));
 })
 const multipleSelection = ref<any[]>([])
 const tableColumns=ref<Array<IQueryTableColumn>>([
@@ -107,7 +120,8 @@ const onQuery=(e:any)=>{
 }
 
 const create =async ()=>{
-  globalStore.update()
+  // globalStore.update()
+  used.open()
  await userApi.addUser([
     {
       userName:'javon',
