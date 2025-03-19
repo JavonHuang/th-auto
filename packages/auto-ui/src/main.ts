@@ -3,7 +3,7 @@ import drag from "@/tool/drag.ts"
 
 import './style.css'
 // import ThUI from 'th-ui-plus'
-import ThUI from 'th-ui-plus'
+import ThUI, { thCreateApp } from 'th-ui-plus'
 import ThUIMobile from 'th-ui-mobile'
 import AutoUI from '@/components/index'
 
@@ -18,7 +18,7 @@ import Main from '@/main.vue'
 console.log(import.meta.env)
 import { router } from '@/router/index'
 import pinia from '@/store/index'
-const app=createApp(Main)
+const app=thCreateApp(Main)
 app.directive('drag', drag)
 
 app.use(ElementPlus)

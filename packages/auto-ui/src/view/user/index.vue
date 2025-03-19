@@ -32,15 +32,14 @@ import { useGlobalStore } from "@/store/useGlobalStore"
 const globalStore = useGlobalStore()
 
 
-import myDialog from './dialog/createDialog.vue';
 const instance = getCurrentInstance();
 console.log(instance)
 
-const used=useThDialog(myDialog,instance!)
+const used=useThDialog(()=>import('./dialog/createDialog.vue'))
 
 onMounted(()=>{
   // render(h(myDialog,{}),instance?.ctx.$el)
-  used.init()
+  // used.init()
   moment.updateLocale('zh', {
       week: {
           dow: 1, // dow: day of week (0 = Sunday, 1 = Monday, ..., 6 = Saturday)
