@@ -23,6 +23,7 @@
 </template>
 
 <script setup lang='ts'>
+import createDialog from './dialog/createDialog.vue'
 import { ref,h,render,getCurrentInstance, onMounted } from 'vue';
 import userApi from "@/api/userApi"
 import { IQueryTableColumn, QueryTableInstance } from 'th-ui-plus';
@@ -31,15 +32,20 @@ import moment from 'moment'
 import { useGlobalStore } from "@/store/useGlobalStore"
 const globalStore = useGlobalStore()
 
-
+const d=ref()
 const instance = getCurrentInstance();
 console.log(instance)
 
-const used=useThDialog(()=>import('./dialog/createDialog.vue'))
+const used=useThDialog({
+  component:()=>import('./dialog/createDialog.vue'),
+  beforeClose:()=>{
+    d.value.test()
+    return Promise.resolve(true)
+  },
+  ref:d,
+})
 
 onMounted(()=>{
-  // render(h(myDialog,{}),instance?.ctx.$el)
-  // used.init()
   moment.updateLocale('zh', {
       week: {
           dow: 1, // dow: day of week (0 = Sunday, 1 = Monday, ..., 6 = Saturday)
@@ -119,7 +125,7 @@ const onQuery=(e:any)=>{
 }
 
 const create =async ()=>{
-  // globalStore.update()
+  // globalStore.update(false)
   used.open()
  await userApi.addUser([
     {

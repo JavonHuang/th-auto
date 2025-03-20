@@ -1,4 +1,4 @@
-import { ref,h,defineComponent, Component, Plugin,resolveComponent, createApp, Directive, defineAsyncComponent } from 'vue';
+import { ref,h,defineComponent, Component, Plugin, createApp, Directive, defineAsyncComponent } from 'vue';
 import ThDialog from '../dialog/dialog';
 
 export const SingletonAPP:{
@@ -27,33 +27,45 @@ export const SingletonAPP:{
     return this.directiveList
   },
 }
-
-
-// function useThDialog<T extends ComponentType>(componentPromise: Promise<T>): ReturnType {  
-//   // 实现  
-// }
-
-export const useThDialog =(component:  () => Promise<Component>)=>{
+interface IParams {
+  component:() => Promise<Component>,
+  keeplive?:boolean,
+  fullscreen?:boolean,
+  beforeClose?:()=>Promise<boolean>,
+  ref?:any
+}
+export const useThDialog =(params:IParams)=>{
   let loadingInstance=null
   let rootDom = null
   let vm = null
   let isInit = false
 
   const visible=ref(false)
-  const asyncComp = defineAsyncComponent(component)
+  const asyncComp = defineAsyncComponent(params.component)
   const elLoadingComponent = defineComponent({
     components:{
-      component
+      component:params.component
     },
     setup(_, { expose }) {
       return () => {
         return h(ThDialog,{
           modelValue:visible.value,
+          fullscreen:params.fullscreen,
           onClose:()=>{
             remove()
+          },
+          beforeClose:async (done: () => any)=>{
+            if(params.beforeClose){
+              const reslut = await params.beforeClose()
+              if(reslut){
+                done()
+              }
+            }else{
+              done()
+            }
           }
         },{
-          default:()=>h(asyncComp)
+          default:()=>h(asyncComp,{ref:params.ref})
         })
       }
     },

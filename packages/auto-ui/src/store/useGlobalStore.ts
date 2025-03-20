@@ -66,8 +66,8 @@ export const useGlobalStore = defineStore('global', () => {
 
   const systemMenu = computed(() => menuList.value)
 
-  const update=()=>{
-    isLogin.value = false;
+  const update=(a:boolean)=>{
+    isLogin.value = a;
   }
 
   return { isLogin, login, menu, systemMenu ,update}

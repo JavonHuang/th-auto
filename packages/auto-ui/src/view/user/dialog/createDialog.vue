@@ -8,19 +8,19 @@ import { ref, reactive } from 'vue'
 import { useGlobalStore } from "@/store/useGlobalStore"
 import { storeToRefs } from "pinia";
 import { useThDialog } from 'th-ui-plus';
-import myDialog from './createDialog2.vue';
 
 const globalStore = useGlobalStore()
-const used=useThDialog(myDialog)
+const used=useThDialog({
+  component:()=>import('./createDialog2.vue')
+})
 
 const { isLogin } = storeToRefs(globalStore) // 把仓库中的数据变成响应式
 const testpa=ref('56767887')
 const test=()=>{
+  globalStore.update(false)
   testpa.value="点击了"
   used.open()
 }
+defineExpose({test })
+
 </script>
-
-<style lang='scss' scoped>
-
-</style>
