@@ -1,4 +1,4 @@
-import { ref,h,defineComponent, Component, Plugin, createApp, Directive, defineAsyncComponent } from 'vue';
+import { ref,h,defineComponent, Component,provide, Plugin, createApp, Directive, defineAsyncComponent, InjectionKey } from 'vue';
 import ThDialog from '../dialog/dialog';
 
 export const SingletonAPP:{
@@ -32,14 +32,29 @@ interface IParams {
   keeplive?:boolean,
   fullscreen?:boolean,
   beforeClose?:()=>Promise<boolean>,
-  ref?:any
+  ref?:any,
+  title:string,
+  draggable?:boolean,
+  overflow?:boolean,
+  width?:string|number,
+  top?:string,
+  modal?:boolean,
+  callback?:()=>void
 }
+
+interface DialogContext {
+  close:()=>void,
+  callback?:()=>void
+}
+
+export const dialogContextKey: InjectionKey<DialogContext> =
+  Symbol('dialogContextKey')
+
 export const useThDialog =(params:IParams)=>{
   let loadingInstance=null
   let rootDom = null
   let vm = null
   let isInit = false
-
   const visible=ref(false)
   const asyncComp = defineAsyncComponent(params.component)
   const elLoadingComponent = defineComponent({
@@ -47,10 +62,26 @@ export const useThDialog =(params:IParams)=>{
       component:params.component
     },
     setup(_, { expose }) {
+
+      const close =()=>{
+        visible.value = false
+      }
+
+      provide(dialogContextKey,{
+        close:close,
+        callback:params.callback
+      })
+
       return () => {
         return h(ThDialog,{
           modelValue:visible.value,
           fullscreen:params.fullscreen,
+          title:params.title,
+          draggable:params.draggable,
+          overflow:params.overflow,
+          width:params.width,
+          top:params.top,
+          modal:params.modal,
           onClose:()=>{
             remove()
           },

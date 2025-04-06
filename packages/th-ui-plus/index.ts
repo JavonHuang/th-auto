@@ -196,5 +196,5 @@ export type {QueryColumnsProps} from "./src/query/query.ts"
 export type {IQueryTableColumn,QueryTableInstance} from './src/queryTable/queryTable.ts'
 export type {FormAutoColumnsProps,ThFormAutoInstance} from './src/formAuto/formAuto.ts'
 
-export {useThDialog} from './src/useHook/useDialog.ts'
+export {useThDialog,dialogContextKey} from './src/useHook/useDialog.ts'
 export * from './src/install.ts'

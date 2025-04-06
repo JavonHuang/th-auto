@@ -9,7 +9,7 @@
         </th-form-item>
       </template>
     </th-form>
-    <div v-if="props.showOperation">
+    <div v-if="props.showOperation" :class="clsOperation">
       <th-button :type="'primary'" v-on:click="submit">提交</th-button>
       <th-button :type="'warning'" v-on:click="resetForm">重置</th-button>
     </div>
@@ -50,6 +50,11 @@ const ns = useName('form-auto')
 const cls = computed(() => [
   ns.base(),
 ])
+
+const clsOperation = computed(() => [
+  ns.is('right'),
+])
+
 const getFormItemClass = (e: FormAutoColumnsProps) => {
   return [
     ns.is(`flex-${e.span ?? 24}`),
@@ -122,5 +127,3 @@ const emits = defineEmits<{
 defineExpose<ThFormAutoInstance>({submit,resetForm })
 
 </script>
-
-<style lang='scss' scoped></style>

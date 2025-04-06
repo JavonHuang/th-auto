@@ -9,7 +9,7 @@
       ref="queryTableRef" 
       :queryModel="queryModel" 
       :selectable="true" 
-      :api="userApi.pageList" 
+      :api="projectApi.pageList" 
       :columns="tableColumns"
       :create="create"
       :delete="deleteUser"
@@ -24,7 +24,7 @@
 
 <script setup lang='ts'>
 import { ref,getCurrentInstance } from 'vue';
-import userApi from "@/api/userApi"
+import projectApi from "@/api/projectApi"
 import { IQueryTableColumn, QueryTableInstance } from 'th-ui-plus';
 import { QueryColumnsProps, useThDialog } from 'th-ui-plus';
 
@@ -80,9 +80,9 @@ const tableColumns=ref<Array<IQueryTableColumn>>([
       },
       {
         onClick:({cellValue})=>{
-          userApi.deleteUser([cellValue]).then(()=>{
-            onQuery(queryModel)
-          })
+          // userApi.deleteUser([cellValue]).then(()=>{
+          //   onQuery(queryModel)
+          // })
         },
         type:'delete'
       }
@@ -98,19 +98,11 @@ const columns=ref<Array<QueryColumnsProps>>([
   {
     component:'ThInput',
     label:"用户名",
-    prop:'userName',
+    prop:'name',
     props:{
       clearable:true
     }
   },
-  {
-    component:'ThDatePicker',
-    label:"创建时间",
-    prop:'createTime',
-    props:{
-      clearable:true
-    }
-  }
 ])
 
 const onQuery=(e:any)=>{

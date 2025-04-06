@@ -11,3 +11,7 @@
 div{
   box-sizing: border-box;
 }
+
+@include is(right){
+  text-align: right;
+}

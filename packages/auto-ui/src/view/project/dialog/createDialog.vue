@@ -15,27 +15,20 @@
 import { dialogContextKey, FormAutoColumnsProps, ThFormAutoInstance } from 'th-ui-plus';
 import {useFormAuto} from 'th-ui-plus'
 import { ref,reactive ,inject } from 'vue';
-import userApi from "@/api/userApi"
+import projectApi from "@/api/projectApi"
 
 const parentDialogContextKey = inject(dialogContextKey, undefined)
 const formRef=ref<ThFormAutoInstance>()
 
 const queryModel=ref({
-  userName:'',
-  password:'',
+  name:'',
 })
 
 const columns=ref<Array<FormAutoColumnsProps>>([
   {
     component:'ThInput',
-    label:"用户名",
-    prop:'userName',
-    span:24,
-  },
-  {
-    component:'ThInput',
-    label:"用户密码",
-    prop:'password',
+    label:"项目名",
+    prop:'name',
     span:24,
   },
 ])
@@ -43,16 +36,13 @@ const columns=ref<Array<FormAutoColumnsProps>>([
 const formAuto=useFormAuto(columns)
 
 const rules=reactive({
-  userName: [
-    { required: true, message: '请输入用户名', trigger: 'blur' },
-  ],
-  password: [
-    { required: true, message: '请输入用户密码', trigger: 'blur' },
+  name: [
+    { required: true, message: '请输入项目名', trigger: 'blur' },
   ],
 })
 
 const addUser = () => {
-  userApi.addUser([queryModel.value]).then(()=>{
+  projectApi.addProject([queryModel.value]).then(()=>{
     parentDialogContextKey?.close()
     parentDialogContextKey?.callback!()
   })
