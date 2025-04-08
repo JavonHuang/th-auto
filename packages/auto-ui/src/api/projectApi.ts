@@ -21,4 +21,25 @@ export default {
       data
     })
   },
+  deleteProject(data: Array<string>) {
+    return request({
+      url: '/api/project/deleteProject',
+      type: 'post',
+      data
+    })
+  },
+  updateProject(data: any) {
+    return request({
+      url: '/api/project/updateProject',
+      type: 'post',
+      data
+    })
+  },
+  getDetail(data: any) {
+    return request({
+      url: '/api/project/getDetail',
+      type: 'post',
+      data
+    })
+  },
 }

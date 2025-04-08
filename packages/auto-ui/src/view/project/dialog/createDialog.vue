@@ -3,7 +3,7 @@
     ref="formRef" 
     :label-width="120" 
     :show-operation="true" 
-    v-model="queryModel" 
+    v-model="modelValue" 
     :columns="columns" 
     :rules="rules"
     v-on:onSubmit="addUser"
@@ -14,15 +14,24 @@
 <script setup lang='ts'>
 import { dialogContextKey, FormAutoColumnsProps, ThFormAutoInstance } from 'th-ui-plus';
 import {useFormAuto} from 'th-ui-plus'
-import { ref,reactive ,inject } from 'vue';
+import { ref,reactive ,inject, onMounted } from 'vue';
 import projectApi from "@/api/projectApi"
 
 const parentDialogContextKey = inject(dialogContextKey, undefined)
 const formRef=ref<ThFormAutoInstance>()
 
-const queryModel=ref({
+const props = defineProps({
+  params: {
+    type: Object,
+    default: () => ({})
+  },
+})
+
+const modelValue=ref({
   name:'',
 })
+
+const oldValue=ref()
 
 const columns=ref<Array<FormAutoColumnsProps>>([
   {
@@ -41,11 +50,27 @@ const rules=reactive({
   ],
 })
 
+onMounted(()=>{
+  if(props.params.id){
+    projectApi.getDetail({id:props.params.id}).then(res=>{
+      modelValue.value.name = res.data.name
+      oldValue.value = res.data
+    })
+  }
+})
+
 const addUser = () => {
-  projectApi.addProject([queryModel.value]).then(()=>{
-    parentDialogContextKey?.close()
-    parentDialogContextKey?.callback!()
-  })
+  if(props.params.id){
+    projectApi.updateProject({...oldValue.value,...modelValue.value}).then(()=>{
+      parentDialogContextKey?.close()
+      parentDialogContextKey?.callback!()
+    })
+  }else{
+    projectApi.addProject([modelValue.value]).then(()=>{
+      parentDialogContextKey?.close()
+      parentDialogContextKey?.callback!()
+    })
+  }
 }
 
 </script>

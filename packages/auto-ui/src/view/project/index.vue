@@ -12,7 +12,7 @@
       :api="projectApi.pageList" 
       :columns="tableColumns"
       :create="create"
-      :delete="deleteUser"
+      :delete="deleteProject"
       :show-index="true"
       :selection-change="selectionChange"
     >
@@ -23,22 +23,20 @@
 </template>
 
 <script setup lang='ts'>
-import { ref,getCurrentInstance } from 'vue';
+import { ref } from 'vue';
 import projectApi from "@/api/projectApi"
 import { IQueryTableColumn, QueryTableInstance } from 'th-ui-plus';
 import { QueryColumnsProps, useThDialog } from 'th-ui-plus';
 
 const addDialogRef=ref()
-const instance = getCurrentInstance();
-console.log(instance)
-
-const used=useThDialog({
+const title = ref('新增')
+const proojectDialog=useThDialog({
   component:()=>import('./dialog/createDialog.vue'),
   beforeClose:()=>{
     // d.value.test()
     return Promise.resolve(true)
   },
-  title:'新增',
+  title:title,
   ref:addDialogRef,
   callback:()=>{
     onQuery({})
@@ -49,40 +47,34 @@ const multipleSelection = ref<any[]>([])
 const tableColumns=ref<Array<IQueryTableColumn>>([
   {
     columnType:'link',
-    prop:'userName',
-    label:'用户名',
+    prop:'name',
+    label:'项目名称',
     width:180,
   },
   {
     columnType:'text',
-    prop:'userId',
-    label:'用户Id',
-  },
-  {
-    columnType:'text',
-    prop:'password',
-    label:'用户密码',
+    prop:'id',
+    label:'项目Id',
   },
   {
     columnType:'action',
-    prop:'userId',
+    prop:'id',
     label:'操作',
     fixed:'right',
     width:200,
     actionList:[
       {
-        onClick:({})=>{},
-        type:'create'
-      },
-      {
-        onClick:({})=>{},
+        onClick:({cellValue})=>{
+          title.value = '编辑'
+          proojectDialog.open({id:cellValue})
+        },
         type:'edit'
       },
       {
         onClick:({cellValue})=>{
-          // userApi.deleteUser([cellValue]).then(()=>{
-          //   onQuery(queryModel)
-          // })
+          projectApi.deleteProject([cellValue]).then(()=>{
+            onQuery(queryModel)
+          })
         },
         type:'delete'
       }
@@ -97,7 +89,7 @@ const queryTableRef=ref<QueryTableInstance>()
 const columns=ref<Array<QueryColumnsProps>>([
   {
     component:'ThInput',
-    label:"用户名",
+    label:"项目名称",
     prop:'name',
     props:{
       clearable:true
@@ -110,18 +102,19 @@ const onQuery=(e:any)=>{
 }
 
 const create =async ()=>{
-  used.open()
+  title.value = '新增'
+  proojectDialog.open()
   onQuery(queryModel)
 }
 
-const deleteUser = () => {
-  userApi.deleteUser(multipleSelection.value).then(()=>{
+const deleteProject = () => {
+  projectApi.deleteProject(multipleSelection.value).then(()=>{
     onQuery(queryModel)
   })
 }
 
 const selectionChange=(e:any[])=>{
-  multipleSelection.value =e.map((row)=>row.userId)
+  multipleSelection.value =e.map((row)=>row.id)
 }
 </script>
 

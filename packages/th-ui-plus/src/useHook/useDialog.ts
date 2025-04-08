@@ -33,13 +33,14 @@ interface IParams {
   fullscreen?:boolean,
   beforeClose?:()=>Promise<boolean>,
   ref?:any,
-  title:string,
+  title:any,
   draggable?:boolean,
   overflow?:boolean,
   width?:string|number,
   top?:string,
   modal?:boolean,
-  callback?:()=>void
+  callback?:()=>void, // 
+  params?:any
 }
 
 interface DialogContext {
@@ -54,6 +55,7 @@ export const useThDialog =(params:IParams)=>{
   let loadingInstance=null
   let rootDom = null
   let vm = null
+  let extraParams = {}
   let isInit = false
   const visible=ref(false)
   const asyncComp = defineAsyncComponent(params.component)
@@ -96,7 +98,7 @@ export const useThDialog =(params:IParams)=>{
             }
           }
         },{
-          default:()=>h(asyncComp,{ref:params.ref})
+          default:()=>h(asyncComp,{ref:params.ref,params:{...params.params,...extraParams}})
         })
       }
     },
@@ -124,7 +126,8 @@ export const useThDialog =(params:IParams)=>{
     loadingInstance = null
   }
 
-  const open=()=>{
+  const open=(e:Object={})=>{
+    extraParams = e
     if(!isInit){
       init()
     }
