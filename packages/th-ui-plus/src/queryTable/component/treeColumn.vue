@@ -48,6 +48,9 @@ const props = withDefaults(
 
 const getColumnFormatter = (queryColumn: IQueryTableColumn) => {
   return (row: any, column: any, cellValue: any, index: number) => {
+    if(!cellValue){
+      return '-'
+    }
     switch (queryColumn.columnType) {
       case 'year':
         return moment(cellValue).format('yyyy')
@@ -66,7 +69,7 @@ const getColumnFormatter = (queryColumn: IQueryTableColumn) => {
       case 'thousands':
         return h(ThousandsColumn,{row,column,cellValue,index})
       case 'link':
-        return h(TinkColumn,{row,column,cellValue,index})
+        return h(TinkColumn,{row,column,cellValue,index,queryColumn})
       case 'action':
         return h(ActionColumn,{row,column,cellValue,index,queryColumn})
       default:

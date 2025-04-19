@@ -13,7 +13,8 @@ export type IQueryTableColumn={
   fixed?:'right'|'left'|null,
   show?:boolean,
   children?:Array<IQueryTableColumn>,
-  actionList?:Array<IAction>
+  actionList?:Array<IAction>,
+  onClick?:(e:{row: any, column: any, cellValue: any, index: number})=>void,
 }
 
 export interface IAction{

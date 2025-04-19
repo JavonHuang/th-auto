@@ -2,7 +2,9 @@
   <el-dropdown
   :class="cls"
   >
-    <slot></slot>
+    <template v-for="(_, name) in $slots" #[name]="slotData">
+      <slot :name v-bind="slotData || {}"></slot>
+    </template>
   </el-dropdown>
 </template>
 

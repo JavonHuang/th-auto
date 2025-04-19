@@ -1,22 +1,22 @@
 <template>
-  <el-dropdown-item
+  <el-dropdown-menu
   :class="cls"
   >
     <slot></slot>
-  </el-dropdown-item>
+  </el-dropdown-menu>
 </template>
 
 <script setup lang='ts'>
 import {defineOptions,computed } from 'vue'
 import {useName} from "../hook/useName"
-import { ElDropdownItem} from 'element-plus'
+import { ElDropdownMenu} from 'element-plus'
 
 
 defineOptions({
-  name:'ThDropdownItem'
+  name:'ThDropdownMenu'
 })
 defineProps()
-const ns = useName('dropdown-item')
+const ns = useName('dropdown-menu')
 const cls = computed(() => [
   ns.base(),
 ])

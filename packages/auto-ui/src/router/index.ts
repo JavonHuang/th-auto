@@ -40,6 +40,18 @@ const routes: Array<RouteRecordRaw> = [
     component:()=>import('@/pages/mobile/index.vue')
   },
   {
+    path:"/uiEditor",
+    name: "uiEditor",
+    component:()=>import('@/view/uiEditor/index.vue'),
+    children:[
+      {
+        path:"/design/index",
+        name: "design_index",
+        component:()=>import('@/pages/design/index.vue')
+      },
+    ]
+  },
+  {
     path:"/",
     name: "portal",
     component:()=>import('@/portal.vue'),

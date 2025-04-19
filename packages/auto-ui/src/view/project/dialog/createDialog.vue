@@ -39,6 +39,9 @@ const columns=ref<Array<FormAutoColumnsProps>>([
     label:"项目名",
     prop:'name',
     span:24,
+    props:{
+      clearable:true
+    }
   },
 ])
 

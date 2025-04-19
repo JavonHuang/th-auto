@@ -31,6 +31,9 @@ const columns=ref<Array<FormAutoColumnsProps>>([
     label:"用户名",
     prop:'userName',
     span:24,
+    props:{
+      clearable:true
+    }
   },
   {
     component:'ThInput',

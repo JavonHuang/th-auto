@@ -27,6 +27,7 @@ import { ref } from 'vue';
 import projectApi from "@/api/projectApi"
 import { IQueryTableColumn, QueryTableInstance } from 'th-ui-plus';
 import { QueryColumnsProps, useThDialog } from 'th-ui-plus';
+import { router } from '@/router/index'
 
 const addDialogRef=ref()
 const title = ref('新增')
@@ -50,11 +51,25 @@ const tableColumns=ref<Array<IQueryTableColumn>>([
     prop:'name',
     label:'项目名称',
     width:180,
+    onClick:(e)=>{
+      const url = router.resolve({path:'/uiEditor'})
+      window.open(url.href, '_blank')
+    }
   },
   {
     columnType:'text',
     prop:'id',
     label:'项目Id',
+  },
+  {
+    columnType:'dateTime',
+    prop:'createTime',
+    label:'创建时间',
+  },
+  {
+    columnType:'dateTime',
+    prop:'updateTime',
+    label:'更新时间',
   },
   {
     columnType:'action',

@@ -1,5 +1,6 @@
 import BaseRequest from "./baseRequest"
 const baseRequest=new BaseRequest({
+  withCredentials: true ,
   request:(e)=>{
     // console.log(e)
     return e;
