@@ -49,6 +49,7 @@ import ThProgress from './src/progress/progress.ts'
 import ThQuery from './src/query/query.ts'
 import ThQueryTable from './src/queryTable/queryTable.ts'
 import ThRadio from './src/radio/radio.ts'
+import ThRadioGroup from './src/radio/radioGroup.ts'
 import ThRate from './src/rate/rate.ts'
 import ThResult from './src/result/result.ts'
 import ThRow from './src/row/row.ts'
@@ -129,6 +130,7 @@ const components: {
   ThQuery,
   ThQueryTable,
   ThRadio,
+  ThRadioGroup,
   ThRate,
   ThResult,
   ThRow,

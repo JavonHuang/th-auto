@@ -52,7 +52,9 @@ const tableColumns=ref<Array<IQueryTableColumn>>([
     label:'项目名称',
     width:180,
     onClick:(e)=>{
-      const url = router.resolve({path:'/uiEditor'})
+      const url = router.resolve({path:'/uiEditor',query:{
+        id:e.row.id
+      }})
       window.open(url.href, '_blank')
     }
   },

@@ -47,6 +47,7 @@ import {ThProgressProps} from './src/progress/progress'
 import {ThQueryProps} from './src/query/query'
 import {ThQueryTableProps} from './src/queryTable/queryTable'
 import {ThRadioProps} from './src/radio/radio'
+import {ThRadioGroupProps} from './src/radio/radioGroup'
 import {ThRateProps} from './src/rate/rate'
 import {ThResultProps} from './src/result/result'
 import {ThRowProps} from './src/row/row'
@@ -124,6 +125,7 @@ declare module 'vue' {
     ThQuery:ThQueryProps,
     ThQueryTable:ThQueryTableProps,
     ThRadio:ThRadioProps,
+    ThRadioGroup:ThRadioGroupProps,
     ThRate:ThRateProps,
     ThResult:ThResultProps,
     ThRow:ThRowProps,

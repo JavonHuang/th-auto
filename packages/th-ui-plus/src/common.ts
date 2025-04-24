@@ -32,11 +32,13 @@ interface IComponentEvent{
   [key: string]: any;
 }
 
-type columnType=''|'ThInput'|'ThDatePicker'|'ThSelect'|'ThInputNumber'|'ThCheckbox';
+type columnType=''|'ThInput'|'ThDatePicker'|'ThSelect'|'ThInputNumber'|'ThCheckbox'|'ThCheckboxGroup'|'ThRadio'|'ThRadioGroup';
+interface IOptions{label:string,value:string | number | boolean | Record<string, any>|any}
 
 export type{
   ThRef,
   IComponentProps,
   IComponentEvent,
-  columnType
+  columnType,
+  IOptions
 }
