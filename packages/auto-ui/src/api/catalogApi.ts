@@ -14,11 +14,18 @@ export default {
       data
     })
   },
-  deleteCatalog(data: { name: string }) {
+  deleteCatalog(data: Array<string>) {
     return request({
       url: '/api/catalog/deleteCatalog',
       type: 'post',
       data
     })
   },
+  getCatalogFile(data:any){
+    return request({
+      url: '/api/catalog/getCatalogFile',
+      type: 'post',
+      data
+    })
+  }
 }

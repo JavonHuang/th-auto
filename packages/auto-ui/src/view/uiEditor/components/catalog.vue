@@ -1,12 +1,13 @@
 <template>
   <th-drawer class="catalog" v-model="isCatalog" direction="ltr" size="300">
-    <th-tree :data="treeData" :props="defaultProps" :indent="4" :expand-on-click-node="false">
+    <th-tree :data="treeData" :default-expand-all="true" :props="defaultProps" :indent="4" :expand-on-click-node="false">
       <template #default="{ node, data }">
+        <th-icon v-if="node.data.type==='0'"><Document /></th-icon>
         <div class="catalog-node">
-          <div class="catalog-node-label">{{ node.label }}</div>
+          <div class="catalog-node-label" v-on:click="getCatalogFile(node.data)">{{ node.label }}</div>
           <div>
             <th-icon v-on:click="addCatalog(node)"><Plus/></th-icon>
-            <th-icon color="#F56C6C"><Delete /></th-icon>
+            <th-icon color="#F56C6C"  v-on:click="delCatalog(node)"><Delete /></th-icon>
           </div>
         </div>
       </template>
@@ -16,7 +17,7 @@
 
 <script setup lang='ts'>
 import { ref,watch } from 'vue'
-import { Plus,Delete } from '@element-plus/icons-vue'
+import { Plus,Delete,Folder,Document } from '@element-plus/icons-vue'
 import { useUIEditorStore } from "@/store/useUIEditorStore"
 import catalogApi from "@/api/catalogApi"
 import { storeToRefs } from 'pinia'
@@ -26,6 +27,9 @@ import { useThDialog } from 'th-ui-plus'
 const addCatalogDialog=useThDialog({
   title:'新增',
   component:()=>import('./../dialog/catalogDialog.vue'),
+  callback:()=>{
+    queryCatalog()
+  }
 })
 const route = useRoute()
 const uiEditorStore = useUIEditorStore()
@@ -51,6 +55,20 @@ const queryCatalog = () => {
 
 const addCatalog = (e:any) => {
   addCatalogDialog.open({...e.data,oparate:'new'})
+}
+
+const delCatalog = (e:any)=>{
+  catalogApi.deleteCatalog([e.data.id]).then((res)=>{
+    queryCatalog()    
+  })
+}
+
+const getCatalogFile = (e:any) => {
+  if(e.type==='0'){
+    catalogApi.getCatalogFile(e).then((res)=>{
+      console.log(res)
+    })
+  }
 }
 </script>
 
