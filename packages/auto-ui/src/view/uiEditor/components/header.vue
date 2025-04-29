@@ -1,14 +1,8 @@
 <template>
   <div class="ui-edit-header">
     <div class="ui-edit-header-left">
-      <th-dropdown>
-        <span>文件</span>
-        <template #dropdown>
-          <th-dropdown-menu>
-            <th-dropdown-item v-on:click="openCatalog">保存</th-dropdown-item>
-          </th-dropdown-menu>
-        </template>
-      </th-dropdown>
+      <span v-on:click="savePage">保存</span>
+      <span v-on:click="openCatalog">项目</span>
     </div>
     <div></div>
   </div>
@@ -16,13 +10,27 @@
 
 <script setup lang='ts'>
 import { useUIEditorStore } from "@/store/useUIEditorStore"
-import { ref, reactive } from 'vue'
+import { useDesignStore } from '@/store/useDesignStore'
+
+import catalogApi from "@/api/catalogApi"
+import { storeToRefs } from "pinia"
+
+const designStore = useDesignStore()
+const { pageDomTree } = storeToRefs(designStore)
+
 const uiEditorStore = useUIEditorStore()
+const { categoryObj } = storeToRefs(uiEditorStore)
 
 const openCatalog = ()=>{
   uiEditorStore.setCatalog(true)
 }
-
+const savePage = ()=>{
+  catalogApi.saveCatalogFile({
+    projectId:categoryObj.value.projectId,
+    catalogId:categoryObj.value.id,
+    data:JSON.stringify(pageDomTree.value)
+  })
+}
 </script>
 
 <style lang='scss' scoped>
@@ -38,6 +46,9 @@ const openCatalog = ()=>{
     height: 100%;
     line-height: 32px;
     outline: none;
+    cursor: pointer;
+    font-size: 14px;
+    margin: 0 4px;
   }
  }
 }

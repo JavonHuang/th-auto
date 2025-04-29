@@ -27,5 +27,12 @@ export default {
       type: 'post',
       data
     })
+  },
+  saveCatalogFile(data:any){
+    return request({
+      url: '/api/catalog/saveCatalogFile',
+      type: 'post',
+      data
+    },4)
   }
 }

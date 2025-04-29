@@ -48,7 +48,7 @@ const props = withDefaults(
 
 const getColumnFormatter = (queryColumn: IQueryTableColumn) => {
   return (row: any, column: any, cellValue: any, index: number) => {
-    if(!cellValue){
+    if(cellValue === null || typeof cellValue === "string" && cellValue.trim() === ""){
       return '-'
     }
     switch (queryColumn.columnType) {

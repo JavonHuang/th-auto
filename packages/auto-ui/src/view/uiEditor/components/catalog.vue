@@ -17,12 +17,14 @@
 
 <script setup lang='ts'>
 import { ref,watch } from 'vue'
-import { Plus,Delete,Folder,Document } from '@element-plus/icons-vue'
+import { Plus,Delete,Document } from '@element-plus/icons-vue'
 import { useUIEditorStore } from "@/store/useUIEditorStore"
+import { useDesignStore } from '@/store/useDesignStore'
 import catalogApi from "@/api/catalogApi"
 import { storeToRefs } from 'pinia'
 import { useRoute } from 'vue-router'
 import { useThDialog } from 'th-ui-plus'
+const designStore = useDesignStore()
 
 const addCatalogDialog=useThDialog({
   title:'新增',
@@ -65,8 +67,10 @@ const delCatalog = (e:any)=>{
 
 const getCatalogFile = (e:any) => {
   if(e.type==='0'){
+    uiEditorStore.setCategoryObj(e)
     catalogApi.getCatalogFile(e).then((res)=>{
-      console.log(res)
+      designStore.setPageDomTree(res.data)
+      uiEditorStore.setCatalog(false)
     })
   }
 }

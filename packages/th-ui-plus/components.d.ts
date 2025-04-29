@@ -62,6 +62,7 @@ import {ThSwitchProps} from './src/switch/switch'
 import {ThTableProps} from './src/table/table'
 import {ThTableColumnProps} from './src/table/tableColumn'
 import {ThTabsProps} from './src/tabs/tabs'
+import {ThTabPaneProps} from './src/tabs/tabPane'
 import {ThTagProps} from './src/tag/tag'
 import {ThTimePickerProps} from './src/timePicker/timePicker'
 import {ThTimeSelectProps} from './src/timeSelect/timeSelect'
@@ -139,6 +140,8 @@ declare module 'vue' {
     ThSwitch:ThSwitchProps,
     ThTable:ThTableProps,
     ThTableColumn:ThTableColumnProps,
+    ThTabs:ThTabsProps,
+    ThTabPane:ThTabPaneProps,
     ThTag:ThTagProps,
     ThTimePicker:ThTimePickerProps,
     ThTimeSelect:ThTimeSelectProps,

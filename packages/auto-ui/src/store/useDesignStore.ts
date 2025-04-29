@@ -1,15 +1,24 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
-import { Direction, ILibTreeNode } from "@/tool/interface";
+import { componentProps, Direction, ILibTreeNode } from "@/tool/interface";
+
+interface IlibSHow { 
+  categoryId: string,
+  categoryName: string,
+  children: Array<componentProps>
+}
 
 export const useDesignStore = defineStore('libStore', () => {
+  //组件商城-组件集合
+  const shopComponents=ref<Array<IlibSHow>>([])
   const dragNodeCode=ref<string|null>(null)
-  const libList = ref<ILibTreeNode>({
+  const pageDomTree = ref<ILibTreeNode>({
     id: 'rootTree',
     component: { 
       targetDragalble: true,
       isInit:true,
-      isModel:false,
+      isModel:0,
+      hasSlot:1,
       code: 'div', 
       name: "根节点", 
       props: {}, 
@@ -21,12 +30,28 @@ export const useDesignStore = defineStore('libStore', () => {
   const selectNode=ref<ILibTreeNode|null>()
 
   /**
+   * 设置组件集合
+   * @param e 组件集合
+   */
+  function setShopComponents(e:Array<IlibSHow>) {
+    shopComponents.value=e
+  }
+
+  /**
    * 设置正在拖动的节点类型
    * @param code 组件code
    */
   function setDragNode(e:string|null) { 
     dragNodeCode.value = e
   }
+
+    /**
+   * 初始化当前编辑页面
+   * @param e 组件集合
+   */
+    function setPageDomTree(e:ILibTreeNode) {
+      pageDomTree.value=e
+    }
   
   /**
    * 插入新节点
@@ -35,7 +60,7 @@ export const useDesignStore = defineStore('libStore', () => {
    * @param d 方向
    */
   function insertChildNode(nodeId: string, childrenNode: ILibTreeNode,d:Direction) {
-    let node:ILibTreeNode=findNode(libList.value,nodeId,()=>{})!
+    let node:ILibTreeNode=findNode(pageDomTree.value,nodeId,()=>{})!
     if (node.children) {
       // if (d == 'right' || d == 'down') {
       //   node.children.push(childrenNode);
@@ -83,7 +108,7 @@ export const useDesignStore = defineStore('libStore', () => {
    * @param childrenNode 
    */
   function updateNode(nodeId: string, childrenNode: ILibTreeNode) { 
-    findNode(libList.value,nodeId,(n)=>{
+    findNode(pageDomTree.value,nodeId,(n)=>{
       n=childrenNode
     })
   }
@@ -107,15 +132,39 @@ export const useDesignStore = defineStore('libStore', () => {
       // 如果没有删除节点，返回当前节点
       return node;
     }
-    findAndRemove(libList.value, id);
+    findAndRemove(pageDomTree.value, id);
   }
     
-  
-  return { dragNodeCode,libList,modelValue,selectNode,insertChildNode,findNode,setDragNode,setSelectNode,updateNode,removeNode } 
-}, 
-{
-  persist: {
-    pick: ['libList']
+  function findLib  (code:string):componentProps|undefined  { 
+    for (let i = 0; i < shopComponents.value.length; i++) { 
+      for (let j = 0; j < shopComponents.value[i].children.length; j++) { 
+        if (shopComponents.value[i].children[j].code == code) { 
+          return JSON.parse(JSON.stringify(shopComponents.value[i].children[j]));
+        }
+      }
+    }
   }
-}
+  
+  return { 
+    dragNodeCode,
+    pageDomTree,
+    shopComponents,
+    modelValue,
+    selectNode,
+    insertChildNode,
+    findNode,
+    setDragNode,
+    setSelectNode,
+    updateNode,
+    removeNode,
+    findLib,
+    setShopComponents,
+    setPageDomTree,
+  } 
+}, 
+// {
+//   persist: {
+//     pick: ['pageDomTree']
+//   }
+// }
 )

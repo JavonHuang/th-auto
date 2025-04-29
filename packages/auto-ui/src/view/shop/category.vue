@@ -9,7 +9,7 @@
       ref="queryTableRef" 
       :queryModel="queryModel" 
       :selectable="true" 
-      :api="userApi.pageList" 
+      :api="shopApi.queryShopCategory" 
       :columns="tableColumns"
       :create="create"
       :delete="deleteUser"
@@ -22,21 +22,20 @@
 
 <script setup lang='ts'>
 import { ref,getCurrentInstance } from 'vue';
-import userApi from "@/api/userApi"
+import shopApi from "@/api/shopApi"
 import { IQueryTableColumn, QueryTableInstance } from 'th-ui-plus';
 import { QueryColumnsProps, useThDialog } from 'th-ui-plus';
 
 const addDialogRef=ref()
-const instance = getCurrentInstance();
-console.log(instance)
+const title =ref('新增')
 
-const used=useThDialog({
-  component:()=>import('./dialog/createDialog.vue'),
+const categoryDialog=useThDialog({
+  component:()=>import('./dialog/categoryDialog.vue'),
   beforeClose:()=>{
     // d.value.test()
     return Promise.resolve(true)
   },
-  title:'新增',
+  title:title,
   ref:addDialogRef,
   callback:()=>{
     onQuery({})
@@ -46,39 +45,42 @@ const used=useThDialog({
 const multipleSelection = ref<any[]>([])
 const tableColumns=ref<Array<IQueryTableColumn>>([
   {
-    columnType:'link',
-    prop:'userName',
-    label:'用户名',
-    width:180,
+    columnType:'text',
+    prop:'categoryId',
+    label:'类别名称ID',
   },
   {
     columnType:'text',
-    prop:'userId',
-    label:'用户Id',
+    prop:'categoryName',
+    label:'类别名称',
   },
   {
-    columnType:'text',
-    prop:'password',
-    label:'用户密码',
+    columnType:'dateTime',
+    prop:'createTime',
+    label:'创建时间',
+  },
+  {
+    columnType:'dateTime',
+    prop:'updateTime',
+    label:'更新时间',
   },
   {
     columnType:'action',
-    prop:'userId',
+    prop:'categoryId',
     label:'操作',
     fixed:'right',
     width:200,
     actionList:[
       {
-        onClick:({})=>{},
-        type:'create'
-      },
-      {
-        onClick:({})=>{},
+        onClick:({cellValue})=>{
+          title.value = '编辑'
+          categoryDialog.open({categoryId:cellValue})
+        },
         type:'edit'
       },
       {
         onClick:({cellValue})=>{
-          userApi.deleteUser([cellValue]).then(()=>{
+          shopApi.delShopCategory([cellValue]).then(()=>{
             onQuery(queryModel)
           })
         },
@@ -95,8 +97,8 @@ const queryTableRef=ref<QueryTableInstance>()
 const columns=ref<Array<QueryColumnsProps>>([
   {
     component:'ThInput',
-    label:"用户名",
-    prop:'userName',
+    label:"类别名称",
+    prop:'categoryName',
     props:{
       clearable:true
     }
@@ -116,12 +118,12 @@ const onQuery=(e:any)=>{
 }
 
 const create =async ()=>{
-  used.open()
+  categoryDialog.open()
   onQuery(queryModel)
 }
 
 const deleteUser = () => {
-  userApi.deleteUser(multipleSelection.value).then(()=>{
+  shopApi.delShopCategory(multipleSelection.value).then(()=>{
     onQuery(queryModel)
   })
 }
@@ -130,7 +132,3 @@ const selectionChange=(e:any[])=>{
   multipleSelection.value =e.map((row)=>row.userId)
 }
 </script>
-
-<style lang='scss' scoped>
-
-</style>

@@ -24,7 +24,8 @@ interface componentProps {
   name: string
   targetDragalble?:boolean
   isInit:boolean
-  isModel:boolean
+  isModel:number,
+  hasSlot:number,
   props?: {
     [key:string]:any
   },

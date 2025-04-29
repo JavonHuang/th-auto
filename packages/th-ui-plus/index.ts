@@ -64,6 +64,7 @@ import ThSwitch from './src/switch/switch.ts'
 import ThTable from './src/table/table.ts'
 import ThTableColumn from './src/table/tableColumn.ts'
 import ThTabs from './src/tabs/tabs.ts'
+import ThTabPane from './src/tabs/tabPane.ts'
 import ThTag from './src/tag/tag.ts'
 import ThTimeline from './src/timeline/timeline.ts'
 import ThTimePicker from './src/timePicker/timePicker.ts'
@@ -145,6 +146,7 @@ const components: {
   ThTable,
   ThTableColumn,
   ThTabs,
+  ThTabPane,
   ThTag,
   ThTimeline,
   ThTimePicker,
@@ -202,3 +204,4 @@ export type {FormAutoColumnsProps,ThFormAutoInstance} from './src/formAuto/formA
 
 export {useThDialog,dialogContextKey} from './src/useHook/useDialog.ts'
 export * from './src/install.ts'
+export {ThMessage} from "./src/message/message.ts"

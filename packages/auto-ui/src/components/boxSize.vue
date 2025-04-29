@@ -1,8 +1,8 @@
 <template>
-  <th-input-number controls-position="right" v-model="numberTop"></th-input-number>
-  <th-input-number controls-position="right" v-model="numberRight"></th-input-number>
-  <th-input-number controls-position="right" v-model="numberBottom"></th-input-number>
-  <th-input-number controls-position="right" v-model="numberLeft"></th-input-number>
+  <th-input-number size="small" controls-position="right" v-model="numberTop"></th-input-number>
+  <th-input-number size="small" controls-position="right" v-model="numberRight"></th-input-number>
+  <th-input-number size="small" controls-position="right" v-model="numberBottom"></th-input-number>
+  <th-input-number size="small" controls-position="right" v-model="numberLeft"></th-input-number>
 </template>
 
 <script setup lang='ts'>

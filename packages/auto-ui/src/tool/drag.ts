@@ -2,14 +2,13 @@ import { Directive } from "vue"
 import { useDesignStore } from "@/store/useDesignStore"
 import { storeToRefs } from "pinia"
 import { Direction } from "@/tool/interface"
-import { findLib } from './libShow'
 import AutoUISet, { getProps } from 'th-ui-set'
 import { generateID } from "./treeTool"
 
 const drag: Directive = {
   mounted(el: HTMLDivElement, binding, vnode, prevVnode) { 
     const store = useDesignStore()
-    const { setDragNode, insertChildNode } = store
+    const { setDragNode, insertChildNode,findLib } = store
     
     el.setAttribute('draggable', 'true')
 

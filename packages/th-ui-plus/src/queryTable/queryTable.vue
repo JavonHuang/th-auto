@@ -72,7 +72,7 @@ const clsPagination = computed(() => [
 const tableRef=ref<ThRef<TableInstance>>()
 const tableData = ref([])
 const currentPage = ref(1)
-const pageSize = ref(10)
+const pageSize = ref(50)
 const total = ref(0)
 const columns = ref<Array<IQueryTableColumn>>([])
 const defaultColumnsShowList = ref<Array<any>>([])

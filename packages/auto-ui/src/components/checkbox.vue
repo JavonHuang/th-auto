@@ -1,5 +1,5 @@
 <template>
-  <th-checkbox v-model="checkbox"></th-checkbox>
+  <th-checkbox size="small" v-model="checkbox"></th-checkbox>
 </template>
 
 <script setup lang='ts'>

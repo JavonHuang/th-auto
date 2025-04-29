@@ -116,7 +116,14 @@ watch(() => props.columns, () => {
 }, { deep: true });
 
 watch(() => ruleFormModel.value, (newVal) => {
-  emits("update:modelValue", newVal)
+  if(JSON.stringify(newVal)!==JSON.stringify(props.modelValue)){
+    emits("update:modelValue", newVal)
+  }
+}, { deep: true })
+
+watch(() => props.modelValue, (newVal) => {
+  // emits("update:modelValue", newVal)
+  ruleFormModel.value = _.cloneDeep(props.modelValue ?? {})
 }, { deep: true })
 
 const emits = defineEmits<{

@@ -1,5 +1,5 @@
 <template>
-  <th-color-picker controls-position="right" v-model="color"></th-color-picker>
+  <th-color-picker size="small" controls-position="right" v-model="color"></th-color-picker>
 </template>
 
 <script setup lang='ts'>
