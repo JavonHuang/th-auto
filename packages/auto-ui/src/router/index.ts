@@ -13,6 +13,11 @@ const routes: Array<RouteRecordRaw> = [
     component:()=>import('@/login.vue')
   },
   {
+    path:"/test",
+    name: "test",
+    component:()=>import('@/pages/common/test.vue')
+  },
+  {
     path:"/preview",
     name: "preview",
     component:()=>import('@/pages/preview/index.vue')

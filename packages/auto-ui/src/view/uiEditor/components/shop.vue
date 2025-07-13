@@ -16,8 +16,13 @@ import { useDesignStore } from '@/store/useDesignStore'
 
 const store = useDesignStore()
 const {setDragNode,removeNode,setShopComponents }=store
-
 const modelValue=ref()
+
+const emits = defineEmits<{
+  (e:'Click',val:any):null
+}>()
+
+
 onMounted(()=>{
   shopApi.getComponentShowTool({}).then(res=>{
     modelValue.value = res.data
@@ -27,5 +32,24 @@ onMounted(()=>{
 
 const onclick = (e:string) => { 
   setDragNode(e)
+  emits("Click", e)
 }
 </script>
+
+<style lang="scss" scoped>
+.ui-shop{
+  .ui-category{
+    font-size: 14px;
+    font-weight:bold;
+  }
+  .ui-component{
+    display: flex;
+    flex-wrap: wrap;
+    span{
+      font-size: 14px;
+      margin: 8px;
+      cursor: pointer;
+    }
+  }
+}
+</style>

@@ -8,6 +8,7 @@
     v-on:click.stop="click(item)"
     v-bind="item.component?.props"
     :style="item.component?.style"
+    v-on="item.component?.event"
     v-model="modelValue[item.id]"
     >
     {{renderText(item)}}

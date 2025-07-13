@@ -38,8 +38,10 @@ const used=useThDialog({
   },
   title:'新增',
   ref:addDialogRef,
-  callback:()=>{
-    onQuery({})
+  events:{
+    onQuery:()=>{
+      onQuery({})
+    }
   }
 })
 

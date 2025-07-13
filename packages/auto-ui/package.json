@@ -22,7 +22,6 @@
     "terser": "^5.36.0",
     "th-ui-mobile": "file:../th-ui-mobile",
     "th-ui-plus": "file:../th-ui-plus",
-    "th-ui-set": "file:../th-ui-set",
     "vue": "^3.5.12",
     "vue-router": "^4.4.5"
   },

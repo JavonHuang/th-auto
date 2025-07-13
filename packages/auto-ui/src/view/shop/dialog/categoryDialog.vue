@@ -18,7 +18,9 @@ import shopApi from "@/api/shopApi"
 
 const parentDialogContextKey = inject(dialogContextKey, undefined)
 const formRef=ref<ThFormAutoInstance>()
-
+  const emits = defineEmits<{
+  (e:'Query',val:any):null
+}>()
 const modelValue=ref({
   categoryName:'',
 })
@@ -62,12 +64,12 @@ const addUser = () => {
   if(props.params.categoryId){
     shopApi.updateShopCategory({...oldValue.value,...modelValue.value}).then(()=>{
       parentDialogContextKey?.close()
-      parentDialogContextKey?.callback!()
+      emits('Query',{})
     })
   }else{
     shopApi.addShopCategory([modelValue.value]).then(()=>{
       parentDialogContextKey?.close()
-      parentDialogContextKey?.callback!()
+      emits('Query',{})
     })
   }
 }

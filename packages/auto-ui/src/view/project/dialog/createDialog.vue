@@ -19,7 +19,9 @@ import projectApi from "@/api/projectApi"
 
 const parentDialogContextKey = inject(dialogContextKey, undefined)
 const formRef=ref<ThFormAutoInstance>()
-
+const emits = defineEmits<{
+  (e:'Query',val:any):null
+}>()
 const props = defineProps({
   params: {
     type: Object,
@@ -66,12 +68,12 @@ const addUser = () => {
   if(props.params.id){
     projectApi.updateProject({...oldValue.value,...modelValue.value}).then(()=>{
       parentDialogContextKey?.close()
-      parentDialogContextKey?.callback!()
+      emits('Query',{})
     })
   }else{
     projectApi.addProject([modelValue.value]).then(()=>{
       parentDialogContextKey?.close()
-      parentDialogContextKey?.callback!()
+      emits('Query',{})
     })
   }
 }

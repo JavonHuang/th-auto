@@ -26,7 +26,9 @@ const modelValue=ref({
   isModel:0,
 })
 const oldValue=ref()
-
+const emits = defineEmits<{
+  (e:'Query',val:any):null
+}>()
 const columns=ref<Array<FormAutoColumnsProps>>([
   {
     component:'ThSelect',
@@ -111,12 +113,12 @@ const addShopComponent = () => {
   if(props.params.componentId){
     shopApi.updateShopComponent({...oldValue.value,...modelValue.value}).then(()=>{
       parentDialogContextKey?.close()
-      parentDialogContextKey?.callback!()
+      emits('Query',{})
     })
   }else{
     shopApi.addShopComponent([modelValue.value]).then(()=>{
       parentDialogContextKey?.close()
-      parentDialogContextKey?.callback!()
+      emits('Query',{})
     })
   }
 }

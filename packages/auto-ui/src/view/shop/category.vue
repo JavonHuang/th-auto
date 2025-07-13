@@ -37,8 +37,10 @@ const categoryDialog=useThDialog({
   },
   title:title,
   ref:addDialogRef,
-  callback:()=>{
-    onQuery({})
+  events:{
+    onQuery:()=>{
+      onQuery({})
+    }
   }
 })
 

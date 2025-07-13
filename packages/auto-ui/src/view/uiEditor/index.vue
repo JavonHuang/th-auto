@@ -44,21 +44,6 @@ import Left from '@/view/uiEditor/components/left.vue'
       padding: 0px 8px;
       width: 300px;
       background: #ececec;
-      :deep(.ui-shop){
-        .ui-category{
-          font-size: 14px;
-          font-weight:bold;
-        }
-        .ui-component{
-          display: flex;
-          flex-wrap: wrap;
-          span{
-            font-size: 14px;
-            margin: 8px;
-            cursor: pointer;
-          }
-        }
-      }
     }
   }
 }

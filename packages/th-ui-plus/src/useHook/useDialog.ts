@@ -39,13 +39,12 @@ interface IParams {
   width?:string|number,
   top?:string,
   modal?:boolean,
-  callback?:()=>void, // 
-  params?:any
+  params?:any,
+  events?:any
 }
 
 interface DialogContext {
   close:()=>void,
-  callback?:()=>void
 }
 
 export const dialogContextKey: InjectionKey<DialogContext> =
@@ -71,7 +70,6 @@ export const useThDialog =(params:IParams)=>{
 
       provide(dialogContextKey,{
         close:close,
-        callback:params.callback
       })
 
       return () => {
@@ -98,7 +96,7 @@ export const useThDialog =(params:IParams)=>{
             }
           }
         },{
-          default:()=>h(asyncComp,{ref:params.ref,params:{...params.params,...extraParams}})
+          default:()=>h(asyncComp,{ref:params.ref,params:{...params.params,...extraParams},...params.events})
         })
       }
     },
@@ -134,8 +132,13 @@ export const useThDialog =(params:IParams)=>{
     visible.value=true
   }
 
+  const close=()=>{
+   remove()
+  }
+
   return {
     open,
+    close,
     get $el(): HTMLElement {
       return vm!.$el
     },

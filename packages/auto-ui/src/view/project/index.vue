@@ -39,8 +39,10 @@ const proojectDialog=useThDialog({
   },
   title:title,
   ref:addDialogRef,
-  callback:()=>{
-    onQuery({})
+  events:{
+    onQuery:()=>{
+      onQuery({})
+    }
   }
 })
 

@@ -19,12 +19,17 @@
 import { ILibTreeNode } from "@/tool/interface";
 import { useDesignStore } from "@/store/useDesignStore";
 import { storeToRefs } from "pinia";
+import { watch } from "vue";
 const store = useDesignStore()
 const { modelValue } = storeToRefs(store)
 
 const props = defineProps<{
   nodeList:Array<ILibTreeNode>
 }>()
+
+// watch(props.nodeList,()=>{
+//   console.log('props.nodeList',props.nodeList)
+// })
 
 const click = (e:ILibTreeNode) => { 
   store.setSelectNode(e)

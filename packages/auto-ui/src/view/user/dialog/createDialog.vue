@@ -25,6 +25,10 @@ const queryModel=ref({
   password:'',
 })
 
+const emits = defineEmits<{
+  (e:'Query',val:any):null
+}>()
+
 const columns=ref<Array<FormAutoColumnsProps>>([
   {
     component:'ThInput',
@@ -57,7 +61,7 @@ const rules=reactive({
 const addUser = () => {
   userApi.addUser([queryModel.value]).then(()=>{
     parentDialogContextKey?.close()
-    parentDialogContextKey?.callback!()
+    emits('Query',{})
   })
 }
 

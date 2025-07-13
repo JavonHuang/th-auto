@@ -32,6 +32,9 @@ interface componentProps {
   style?: {
     [key:string]:any
   },
+  event?: {
+    [key:string]:any
+  },
   extra?: {
     [key:string]:any
   }

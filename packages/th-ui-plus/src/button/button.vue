@@ -29,9 +29,8 @@ const ns = useName('button')
 
 const cls = computed(() => [
   ns.base(),
-  ns.is(attrs.type??''),
-  ns.is(attrs.size??'default'),
+  ns.is(`type-${attrs.type}`),
+  ns.is(attrs.size??''),
 ])
-
 
 </script>

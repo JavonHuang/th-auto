@@ -24,6 +24,7 @@ const login = () => {
     })
   })
 }
+
 </script>
 <style lang='scss' scoped>
 .login {

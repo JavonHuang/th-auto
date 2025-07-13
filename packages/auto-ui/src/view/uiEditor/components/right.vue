@@ -4,7 +4,7 @@
       <template #zj>
         <Shop></Shop>
       </template>
-      <template #pz>
+      <template #xpz>
         <Control></Control>
       </template>
     </th-tabs>
@@ -12,9 +12,9 @@
 </template>
 
 <script setup lang='ts'>
-import { ref, reactive } from 'vue'
+import { ref } from 'vue'
 import Shop from '@/view/uiEditor/components/shop.vue'
 import Control from '@/view/uiEditor/components/control.vue'
 
-const tabs=ref([{label:'组件',value:'zj'},{label:'配置',value:'pz'}])
+const tabs=ref([{label:'组件',value:'zj'},{label:'新配置',value:'xpz'}])
 </script>
