@@ -18,6 +18,10 @@ const store = useDesignStore()
 const {setDragNode,removeNode,setShopComponents }=store
 const modelValue=ref()
 
+const props =defineProps({
+  params:{}
+})
+
 const emits = defineEmits<{
   (e:'Click',val:any):null
 }>()
@@ -31,8 +35,9 @@ onMounted(()=>{
 })
 
 const onclick = (e:string) => { 
+  console.log(props)
   setDragNode(e)
-  emits("Click", e)
+  emits("Click", {code:e,...props.params!})
 }
 </script>
 

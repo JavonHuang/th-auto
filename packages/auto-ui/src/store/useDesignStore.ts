@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
 import { componentProps, Direction, ILibTreeNode } from "@/tool/interface";
-
+import _ from 'lodash'
 interface IlibSHow { 
   categoryId: string,
   categoryName: string,
@@ -67,7 +67,11 @@ export const useDesignStore = defineStore('libStore', () => {
       // } else { 
       //   node.children.unshift(childrenNode);
       // }
-      node.children.push(childrenNode);
+      if(d == 'down'){
+        node.children.push(childrenNode);
+      }else if (d == 'up'){
+         node.children.unshift(childrenNode);
+      }
     } else {
         node.children = [childrenNode];
     }
@@ -139,7 +143,7 @@ export const useDesignStore = defineStore('libStore', () => {
     for (let i = 0; i < shopComponents.value.length; i++) { 
       for (let j = 0; j < shopComponents.value[i].children.length; j++) { 
         if (shopComponents.value[i].children[j].code == code) { 
-          return JSON.parse(JSON.stringify(shopComponents.value[i].children[j]));
+          return _.cloneDeep(shopComponents.value[i].children[j]);
         }
       }
     }

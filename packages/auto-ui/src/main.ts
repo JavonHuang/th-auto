@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
 import drag from "@/tool/drag.ts"
+import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 
 import './style.css'
 // import ThUI from 'th-ui-plus'
@@ -26,4 +27,7 @@ app.use(ElementPlus)
 app.use(ThUI)
 app.use(ThUIMobile)
 app.use(AutoUI)
+for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
+  app.component(key, component)
+}
 app.use(pinia).use(router).mount('#app')

@@ -35,15 +35,15 @@ const selectMenus = ref()
 const menus = [
   {
     name:'插入子节点',
-    type:'1'
+    type:'down'
   },
   {
     name:'上方插入节点',
-    type:'2'
+    type:'up'
   },
   {
     name:'下方插入节点',
-    type:'3'
+    type:'down'
   }
 ]
 
@@ -57,7 +57,7 @@ const shopDialog=useThDialog({
   title:'新增',
   events:{
     onClick:(e)=>{
-      // let component=findLib(e)
+      let component=findLib(e.code)
       // const fn=AutoUISet[component?.code.replace('-','')+'Set']
       // if(fn){
       //   const config=fn()
@@ -66,12 +66,12 @@ const shopDialog=useThDialog({
       //   component!.extra=getProps(config.extra)
       // }
 
-      // insertChildNode(selectMenus.value.id, {
-      //   id: generateID(),
-      //   component: component,
-      //   children: [],
-      // },'down')
-      // shopDialog.close()
+      insertChildNode(selectMenus.value.id, {
+        id: generateID(),
+        component: component,
+        children: [],
+      },e.type)
+      shopDialog.close()
     }
   }
 })

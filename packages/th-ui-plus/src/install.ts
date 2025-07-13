@@ -16,7 +16,8 @@ export function thCreateApp(rootComponent: Component){
     },
     mount(rootContainer: HTMLElement | string){
       app.mount(rootContainer)
-    }
+    },
+    component:app.component
   }
   return {
    ...methods

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="ui-control">
     <component :is="componentName" v-model="propsObj"></component>
   </div>
 </template>
@@ -17,6 +17,7 @@ const propsObj =ref()
 
 watch(selectNode,()=>{
   componentName.value=`${selectNode?.value?.component?.code}Set`
+  propsObj.value=selectNode?.value?.component?.props
 })
 
 watch(propsObj,()=>{
@@ -30,6 +31,11 @@ watch(propsObj,()=>{
 
 </script>
 
-<style lang='scss' scoped>
-
-</style>
+<style lang="scss" scoped>
+.ui-control{
+  border-left: 1px solid #DCDFE6;
+  padding: 4px 8px;
+  background:#ffffff;
+  
+}
+</style> 

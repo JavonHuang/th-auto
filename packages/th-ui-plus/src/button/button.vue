@@ -2,7 +2,8 @@
   <el-button 
     v-bind="$attrs"
     :class="cls"
-  >    
+  > 
+  {{context}}
     <slot></slot>
   </el-button>
 </template>
@@ -17,7 +18,7 @@ defineOptions({
   name:'ThButton'
 })
 defineProps({
-  mytext: {
+  context: {
       type:String,
       required: false
   },
