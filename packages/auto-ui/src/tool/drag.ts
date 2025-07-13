@@ -2,7 +2,7 @@ import { Directive } from "vue"
 import { useDesignStore } from "@/store/useDesignStore"
 import { storeToRefs } from "pinia"
 import { Direction } from "@/tool/interface"
-import AutoUISet, { getProps } from 'th-ui-set'
+// import AutoUISet, { getProps } from 'th-ui-set'
 import { generateID } from "./treeTool"
 
 const drag: Directive = {
@@ -66,13 +66,13 @@ const drag: Directive = {
           dropDirection = 'down';
         }
         let component=findLib(dragNodeCode.value!)
-        const fn=AutoUISet[component?.code.replace('-','')+'Set']
-        if(fn){
-          const config=fn()
-          component!.props=getProps(config.props)
-          component!.style=getProps(config.style)
-          component!.extra=getProps(config.extra)
-        }
+        // const fn=AutoUISet[component?.code.replace('-','')+'Set']
+        // if(fn){
+        //   const config=fn()
+        //   component!.props=getProps(config.props)
+        //   component!.style=getProps(config.style)
+        //   component!.extra=getProps(config.extra)
+        // }
 
         insertChildNode(el.getAttribute('id')!, {
           id: generateID(),
